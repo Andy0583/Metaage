@@ -104,9 +104,12 @@ modprobe br_netfilter
 ```
 kubeadm init --control-plane-endpoint="172.12.25.51" --pod-network-cidr=10.244.0.0/16
 ```
-* 紀錄下圖"Then you can join any number of worker nodes by running the following on each as root"資訊
-  
-![](https://github.com/Andy0583/Dell-CSI-for-Powerstore/blob/main/image/001.png?raw=true)
+* 紀錄"Then you can join any number of worker nodes by running the following on each as root"資訊
+
+* 若有需要，可使用下列指令重新顯示Join Master資訊
+```
+kubeadm token create --print-join-command
+```
 
 ```
 mkdir -p $HOME/.kube
@@ -115,12 +118,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 kubectl apply -f kube-flannel.yml
-```
-
-
-*  重新顯示Join Master資訊
-```
-kubeadm token create --print-join-command
 ```
 
 
@@ -139,9 +136,9 @@ kubeadm join 192.168.0.231:6443 --token 0bxz18.pl91tl6wuovyi04i \
 ```
 root@k8s1:~# kubectl get node
 NAME            STATUS   ROLES           AGE     VERSION
-k8s1.andy.com   Ready    control-plane   14m     v1.27.10
-k8s2.andy.com   Ready    <none>          3m16s   v1.27.10
-k8s3.andy.com   Ready    <none>          3m13s   v1.27.10
+k8s1.andy.com   Ready    control-plane   6m31s   v1.34.2
+k8s2.andy.com   Ready    <none>          2m18s   v1.34.2
+k8s3.andy.com   Ready    <none>          32s     v1.34.2
 ```
 
 ### 8.測試K8S是否可用
@@ -157,9 +154,8 @@ root@k8s1:~# kubectl get svc nginx
 NAME    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 nginx   NodePort   10.99.22.145   <none>        80:32400/TCP   2m11s
 ```
-*  開啟瀏覽器輸入 "K8S IP : Port"，若成功會顯示如下圖
-![](https://github.com/Andy0583/Kubernetes/blob/main/image/013.png?raw=true)
-
+*  開啟瀏覽器輸入 "K8S IP(三個Node任一IP) : Port"
+  
 *  刪除測試資料
 ```
 root@k8s1:~# kubectl delete svc nginx
