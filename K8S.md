@@ -1,7 +1,3 @@
-# K8S安裝程序
-### 1.前置作業
-* Master/Woerker皆需執行
-* root密碼修改 / 啟用
 ```
 sudo ufw disable
 sudo passwd root
@@ -14,15 +10,6 @@ sudo vi /etc/ssh/sshd_config
 sudo systemctl restart ssh
 ```
 
-* 更新Ubuntu
-```
-apt update -y && apt upgrade -y
-```
-
-### 2.修改Hostname及Hosts
-* Master/Woerker皆需執行
-* 依據環境不同修改Host Name及”hosts”
-
 ```
 hostnamectl set-hostname "k8s1.andy.com"
 cat >> /etc/hosts << EOF
@@ -32,16 +19,11 @@ cat >> /etc/hosts << EOF
 EOF
 ```
 
-
-### 3.永久關閉Swap
-* Master/Woerker皆需執行
 ```
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 
-
-### 4.安裝K8S
 * Master/Woerker皆需執行
 ```
 cat <<EOF | tee /etc/modules-load.d/k8s.conf
@@ -85,10 +67,10 @@ systemctl restart containerd
 systemctl enable containerd
 ```
 
-* 請依據所需K8S版本號碼輸入，並進行安裝kubelet、kubeadm、kubectl。
+* 安裝kubelet、kubeadm、kubectl。
 ```
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 apt-get update
 apt-cache madison kubelet
 apt install -y kubelet kubeadm  kubectl
@@ -97,16 +79,11 @@ apt-mark hold kubelet kubeadm kubectl
 modprobe br_netfilter
 ```
 
-
-### 5.K8S初始化
 * 於Master執行
 * control-plane-endpoint請輸入Master IP，pod-network-cidr維持預設，為Pod內部使用IP(最多可使用65,536個)。
 ```
 kubeadm init --control-plane-endpoint="192.168.0.231" --pod-network-cidr=10.244.0.0/16
 ```
-* 紀錄下圖"Then you can join any number of worker nodes by running the following on each as root"資訊
-  
-![](https://github.com/Andy0583/Dell-CSI-for-Powerstore/blob/main/image/001.png?raw=true)
 
 ```
 mkdir -p $HOME/.kube
@@ -117,15 +94,11 @@ wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/k
 kubectl apply -f kube-flannel.yml
 ```
 
-
 *  重新顯示Join Master資訊
 ```
 kubeadm token create --print-join-command
 ```
 
-
-### 6.Worker Node加入K8S Cluster
-* 於Worker執行
 * 加入Cluster，使用Master產出的Join資訊
 ```
 kubeadm join 192.168.0.231:6443 --token 0bxz18.pl91tl6wuovyi04i \
@@ -133,8 +106,6 @@ kubeadm join 192.168.0.231:6443 --token 0bxz18.pl91tl6wuovyi04i \
 ```
 
 
-### 7.確認安裝成功
-* 於Master執行
 *  於Master檢查Node資訊，確認安裝成功
 ```
 root@k8s1:~# kubectl get node
@@ -144,7 +115,6 @@ k8s2.andy.com   Ready    <none>          3m16s   v1.27.10
 k8s3.andy.com   Ready    <none>          3m13s   v1.27.10
 ```
 
-### 8.測試K8S是否可用
 * 於Master執行
 ```
 root@k8s1:~# kubectl create deployment nginx --image=nginx
