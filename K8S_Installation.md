@@ -26,9 +26,9 @@ apt update -y && apt upgrade -y
 ```
 hostnamectl set-hostname "k8s1.andy.com"
 cat >> /etc/hosts << EOF
-192.168.0.231 k8s1.andy.com
-192.168.0.232 k8s2.andy.com
-192.168.0.233 k8s3.andy.com
+172.12.25.51 k8s1.andy.com
+172.12.25.52 k8s2.andy.com
+172.12.25.53 k8s3.andy.com
 EOF
 ```
 
@@ -87,8 +87,8 @@ systemctl enable containerd
 
 * 請依據所需K8S版本號碼輸入，並進行安裝kubelet、kubeadm、kubectl。
 ```
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 apt-get update
 apt-cache madison kubelet
 apt install -y kubelet kubeadm  kubectl
@@ -102,7 +102,7 @@ modprobe br_netfilter
 * 於Master執行
 * control-plane-endpoint請輸入Master IP，pod-network-cidr維持預設，為Pod內部使用IP(最多可使用65,536個)。
 ```
-kubeadm init --control-plane-endpoint="192.168.0.231" --pod-network-cidr=10.244.0.0/16
+kubeadm init --control-plane-endpoint="172.12.25.51" --pod-network-cidr=10.244.0.0/16
 ```
 * 紀錄下圖"Then you can join any number of worker nodes by running the following on each as root"資訊
   
