@@ -1,6 +1,6 @@
 ```
-sudo ufw disable
 sudo passwd root
+sudo ufw disable
 sudo vi /etc/ssh/sshd_config
 ```
 > ```
