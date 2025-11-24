@@ -1,4 +1,3 @@
-# K8S安裝程序
 ### 1.前置作業
 * Master/Woerker皆需執行
 * root密碼修改 / 啟用
@@ -32,14 +31,12 @@ cat >> /etc/hosts << EOF
 EOF
 ```
 
-
 ### 3.永久關閉Swap
 * Master/Woerker皆需執行
 ```
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
-
 
 ### 4.安裝K8S
 * Master/Woerker皆需執行
@@ -97,7 +94,6 @@ apt-mark hold kubelet kubeadm kubectl
 modprobe br_netfilter
 ```
 
-
 ### 5.K8S初始化
 * 於Master執行
 * control-plane-endpoint請輸入Master IP，pod-network-cidr維持預設，為Pod內部使用IP(最多可使用65,536個)。
@@ -119,7 +115,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 kubectl apply -f kube-flannel.yml
 ```
-
 
 ### 6.Worker Node加入K8S Cluster
 * 於Worker執行
