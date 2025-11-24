@@ -140,7 +140,7 @@ sdc                  8:32   0   30G  0 disk
 sr0                 11:0    1 1024M  0 rom
 ```
 
-# 建置PV & VG(單台Node設定即可)
+### 建置PV & VG(單台Node設定即可)
 ```
 root@pve1:~# fdisk -l
 .......................
