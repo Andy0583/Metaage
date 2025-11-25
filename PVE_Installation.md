@@ -8,7 +8,7 @@ vi /etc/chrony/chrony.conf
 > pool 2.debian.pool.ntp.org iburst
 > # 增加
 > server time.stdtime.gov.tw iburst
-> server clock.stdtime.gov.tw iburst
+> server 172.12.25.25 iburst
 > ```
 ```
 systemctl enable chrony --now
