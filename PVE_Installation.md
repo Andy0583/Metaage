@@ -29,14 +29,6 @@ apt update && apt full-upgrade -y
 sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 systemctl restart pveproxy.service
 ```
-### 設定Hosts
-```
-# 於GUI介面進入每台Node —> System —> Hosts，貼上Ceph網段IP，記得save
-172.12.25.71 pve1.andy.com pve1
-172.12.25.72 pve2.andy.com pve2
-172.12.25.73 pve3.andy.com pve3
-#記得Save
-```
 
 ## iSCSI設定
 ### iSCSI Discovery(每台Node皆需要)
