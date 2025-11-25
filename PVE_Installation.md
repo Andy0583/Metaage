@@ -84,6 +84,11 @@ lrwxrwxrwx 1 root root   9 Sep 25 16:19 ip-172.12.25.34:3260-iscsi-iqn.1992-04.c
 root@pve1:~# apt install multipath-tools -y
 Installing:
   multipath-tools
+
+# Multipath離線安裝
+root@pve1:~# tar -xvf multipath.tar
+root@pve1:~# cd multipath
+root@pve1:~/multipath# dpkg -i *.deb
   
 root@pve1:~# systemctl enable multipathd && systemctl start multipathd
 
