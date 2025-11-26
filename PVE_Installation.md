@@ -152,5 +152,10 @@ root@pve1:~# pvcreate /dev/mapper/mpatha
   
 root@pve1:~# vgcreate andy_vg /dev/mapper/mpatha
   Volume group "andy_vg" successfully created
+
+# 若需建立LVM-thin，需建立LV
+root@pve1:~# lvcreate -l 100%FREE --thinpool andy_thinpool andy_vg
+  Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
+  Logical volume "andy_thinpool" created.
 ```
 
