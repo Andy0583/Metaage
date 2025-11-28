@@ -33,7 +33,6 @@ systemctl restart pveproxy.service
 ## iSCSI設定
 ### iSCSI Discovery
 ```
-# 每台Node皆需要
 root@pve1:~# cat /etc/iscsi/initiatorname.iscsi
 InitiatorName=iqn.1994-05.com.redhat:client01
 
@@ -80,8 +79,9 @@ total 0
 lrwxrwxrwx 1 root root   9 Sep 25 16:19 ip-172.12.25.33:3260-iscsi-iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1-lun-0 -> ../../sdb
 lrwxrwxrwx 1 root root   9 Sep 25 16:19 ip-172.12.25.34:3260-iscsi-iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2-lun-0 -> ../../sdc
 ```
-### Multipath安裝(每台Node皆需要)
+### Multipath安裝
 ```
+# Multipath線上安裝
 root@pve1:~# apt install multipath-tools -y
 Installing:
   multipath-tools
