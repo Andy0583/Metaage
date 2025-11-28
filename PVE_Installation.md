@@ -174,5 +174,4 @@ dpkg -i *.deb
 # 需先建立Ceph network
 pveceph init --network 192.168.10.0/24
 pveceph createmon
-pveceph createmgr
 ```
