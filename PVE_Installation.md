@@ -166,6 +166,7 @@ root@pve1:~# lvcreate -l 100%FREE --thinpool andy_thinpool andy_vg
 ```
 mkdir ceph_offline
 cd ceph_offline
+#上傳ceph.tar至ceph_offline目錄中
 tar -xvf ceph.tar
 dpkg -i *.deb
 ```
