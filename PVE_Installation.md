@@ -31,8 +31,9 @@ systemctl restart pveproxy.service
 ```
 
 ## iSCSI設定
-### iSCSI Discovery(每台Node皆需要)
+### iSCSI Discovery
 ```
+# 每台Node皆需要
 root@pve1:~# cat /etc/iscsi/initiatorname.iscsi
 InitiatorName=iqn.1994-05.com.redhat:client01
 
@@ -138,8 +139,9 @@ sdc                  8:32   0   30G  0 disk
 sr0                 11:0    1 1024M  0 rom
 ```
 
-### 建置PV & VG(單台Node設定即可)
+### 建置PV & VG
 ```
+# 單台Node設定即可
 root@pve1:~# fdisk -l
 .......................
 Disk /dev/mapper/mpatha: 30 GiB, 32212254720 bytes, 62914560 sectors
