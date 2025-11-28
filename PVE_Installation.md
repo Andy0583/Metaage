@@ -1,14 +1,13 @@
 ## 初始設定
 ### 時間校時
 ```
-vi /etc/chrony/chrony.conf
+nano /etc/chrony/chrony.conf
 ```
 > ```
 > # 刪除
 > pool 2.debian.pool.ntp.org iburst
 > # 增加
-> server time.stdtime.gov.tw iburst
-> server 172.12.25.25 iburst
+> server 172.12.25.51 iburst
 > ```
 ```
 systemctl enable chrony --now
