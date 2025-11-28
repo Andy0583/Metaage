@@ -161,3 +161,18 @@ root@pve1:~# lvcreate -l 100%FREE --thinpool andy_thinpool andy_vg
   Logical volume "andy_thinpool" created.
 ```
 
+## 離線安裝Ceph
+### Ceph安裝
+```
+mkdir ceph_offline
+cd ceph_offline
+tar -xvf ceph.tar
+dpkg -i *.deb
+```
+### Ceph初始化
+```
+# 需先建立Ceph network
+pveceph init --network 192.168.10.0/24
+pveceph createmon
+pveceph createmgr
+```
