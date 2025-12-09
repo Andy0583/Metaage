@@ -106,6 +106,7 @@ mkdir ceph_offline
 cd ceph_offline
 #上傳ceph.tar至ceph_offline目錄中
 tar -xvf ceph.tar
+cd ceph
 dpkg -i *.deb
 ```
 ### Ceph初始化
