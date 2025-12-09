@@ -32,67 +32,29 @@ systemctl restart pveproxy.service
 ## iSCSI設定
 ### iSCSI Discovery
 ```
-root@pve1:~# cat /etc/iscsi/initiatorname.iscsi
-InitiatorName=iqn.1994-05.com.redhat:client01
-
-root@pve1:~# iscsiadm -m discovery -t st -p 172.12.25.33:3260
-172.12.25.33:3260,1 iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1
-172.12.25.34:3260,2 iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2
-
-root@pve1:~# iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1 -l
-Logging in to [iface: default, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1, portal: 172.12.25.33,3260]
-Login to [iface: default, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1, portal: 172.12.25.33,3260] successful.
-
-root@pve1:~# iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2 -l
-Logging in to [iface: default, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2, portal: 172.12.25.34,3260]
-Login to [iface: default, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2, portal: 172.12.25.34,3260] successful.
-
-root@pve1:~# iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1 -p 172.12.25.33 --op update -n node.startup -v automatic
-root@pve1:~# iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2 -p 172.12.25.34 --op update -n node.startup -v automatic
+iscsiadm -m discovery -t st -p 192.168.130.228:3260
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a1 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a3 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a1 -p 192.168.130.228 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a3 -p 192.168.131.228 --op update -n node.startup -v automatic
 ```
-### Storage配置
+### Storage配置後
 ```
-root@pve1:~# iscsiadm -m session --rescan
-Rescanning session [sid: 1, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1, portal: 172.12.25.33,3260]
-Rescanning session [sid: 2, target: iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2, portal: 172.12.25.34,3260]
-
-root@pve1:~# lsblk
-NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sda                  8:0    0  100G  0 disk
-├─sda1               8:1    0 1007K  0 part
-├─sda2               8:2    0  512M  0 part /boot/efi
-└─sda3               8:3    0 99.5G  0 part
-  ├─pve-swap       252:0    0    8G  0 lvm  [SWAP]
-  ├─pve-root       252:1    0 34.9G  0 lvm  /
-  ├─pve-data_tmeta 252:2    0    1G  0 lvm
-  │ └─pve-data     252:4    0 42.2G  0 lvm
-  └─pve-data_tdata 252:3    0 42.2G  0 lvm
-    └─pve-data     252:4    0 42.2G  0 lvm
-sdb                  8:16   0   30G  0 disk
-sdc                  8:32   0   30G  0 disk
-sr0                 11:0    1 1024M  0 rom
-
-
-root@pve1:~# ls -l /dev/disk/by-path
-total 0
-lrwxrwxrwx 1 root root   9 Sep 25 16:19 ip-172.12.25.33:3260-iscsi-iqn.1992-04.com.emc:cx.virt2444cbsk5x.a1-lun-0 -> ../../sdb
-lrwxrwxrwx 1 root root   9 Sep 25 16:19 ip-172.12.25.34:3260-iscsi-iqn.1992-04.com.emc:cx.virt2444cbsk5x.a2-lun-0 -> ../../sdc
+iscsiadm -m session --rescan
+lsblk
 ```
 ### Multipath安裝
 ```
 # Multipath線上安裝
-root@pve1:~# apt install multipath-tools -y
-Installing:
-  multipath-tools
+apt install multipath-tools -y
 
 # Multipath離線安裝
-root@pve1:~# tar -xvf multipath.tar
-root@pve1:~# cd multipath
-root@pve1:~/multipath# dpkg -i *.deb
-  
-root@pve1:~# systemctl enable multipathd && systemctl start multipathd
+tar -xvf multipath.tar
+cd multipath
+dpkg -i *.deb
+systemctl enable multipathd && systemctl start multipathd
 
-root@pve1:~# vi /etc/multipath.conf
+vi /etc/multipath.conf
 =======================
 defaults {
     user_friendly_names yes
@@ -109,33 +71,10 @@ blacklist {
     devnode "^sda" 
 }
 =======================
+reboot
+multipath -ll
+lsblk
 
-root@pve1:~# reboot
-
-root@pve1:~# multipath -ll
-mpatha (360060160aaef60316c1f20699cb21938) dm-5 DGC,VRAID
-size=30G features='1 queue_if_no_path' hwhandler='1 alua' wp=rw
-`-+- policy='round-robin 0' prio=50 status=active
-  |- 33:0:0:0 sdb 8:16 active ready running
-  `- 34:0:0:0 sdc 8:32 active ready running
-
-root@pve1:~# lsblk
-NAME               MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
-sda                  8:0    0  100G  0 disk
-├─sda1               8:1    0 1007K  0 part
-├─sda2               8:2    0  512M  0 part  /boot/efi
-└─sda3               8:3    0 99.5G  0 part
-  ├─pve-swap       252:0    0    8G  0 lvm   [SWAP]
-  ├─pve-root       252:1    0 34.9G  0 lvm   /
-  ├─pve-data_tmeta 252:2    0    1G  0 lvm
-  │ └─pve-data     252:4    0 42.2G  0 lvm
-  └─pve-data_tdata 252:3    0 42.2G  0 lvm
-    └─pve-data     252:4    0 42.2G  0 lvm
-sdb                  8:16   0   30G  0 disk
-└─mpatha           252:5    0   30G  0 mpath
-sdc                  8:32   0   30G  0 disk
-└─mpatha           252:5    0   30G  0 mpath
-sr0                 11:0    1 1024M  0 rom
 ```
 
 ### 建置PV & VG
