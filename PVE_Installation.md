@@ -105,10 +105,7 @@ root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool andy_vg
 ## 離線安裝Ceph
 ### Ceph安裝
 ```
-mkdir ceph_offline
-cd ceph_offline
-#上傳ceph.tar至ceph_offline目錄中
-tar -xvf ceph.tar
+#上傳ceph至PVE上
 cd ceph
 dpkg -i *.deb
 ```
