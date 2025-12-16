@@ -35,11 +35,11 @@ systemctl restart pveproxy.service
 ## iSCSI設定
 ### iSCSI Discovery
 ```
-iscsiadm -m discovery -t st -p 192.168.130.230:3260
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a1 -l
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a3 -l
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a1 -p 192.168.130.228 --op update -n node.startup -v automatic
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt25482nsdir.a3 -p 192.168.131.228 --op update -n node.startup -v automatic
+iscsiadm -m discovery -t st -p 192.168.130.241:3260
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -p 192.168.130.241 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 192.168.131.241 --op update -n node.startup -v automatic
 ```
 ### Storage配置後
 ```
