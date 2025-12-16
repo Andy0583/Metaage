@@ -35,11 +35,11 @@ systemctl restart pveproxy.service
 ## iSCSI設定
 ### iSCSI Discovery
 ```
-iscsiadm -m discovery -t st -p 192.168.130.241:3260
+iscsiadm -m discovery -t st -p 10.10.130.241:3260
 iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -l
 iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -l
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -p 192.168.130.241 --op update -n node.startup -v automatic
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 192.168.131.241 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -p 10.10.130.241 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 10.10.131.241 --op update -n node.startup -v automatic
 
 # 查詢PVE iqn
 cat /etc/iscsi/initiatorname.iscsi
