@@ -2,8 +2,8 @@
 \\172.22.5.246\pve_tools
 
 ## 初始設定
-### 時間校時
 ```
+# 時間校時
 nano /etc/chrony/chrony.conf
 ```
 > ```
@@ -17,24 +17,22 @@ systemctl enable chrony --now
 systemctl restart chronyd
 chronyc -a makestep
 date
-```
-### 線上更新
-```
+
+# 線上更新
 rm /etc/apt/sources.list.d/pve-enterprise.sources
 rm /etc/apt/sources.list.d/ceph.sources
 sed -i 's|http://ftp.debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list
 sed -i 's|http://security.debian.org|https://mirrors.ustc.edu.cn/debian-se...|g' /etc/apt/sources.list
 apt update && apt full-upgrade -y
-```
-### 移除未訂閱
-``` 
+
+# 移除未訂閱
 sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 systemctl restart pveproxy.service
 ```
 
 ## iSCSI設定
-### iSCSI Discovery
 ```
+# iSCSI Discovery
 iscsiadm -m discovery -t st -p 10.10.130.241:3260
 iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -l
 iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -l
@@ -43,18 +41,18 @@ iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 10.10.131.241 --
 
 # 查詢PVE iqn
 cat /etc/iscsi/initiatorname.iscsi
-```
-### Storage配置後
-```
+
+# 重新掃描Disk
 iscsiadm -m session --rescan
 lsblk
 ```
-### Multipath安裝
+
+## Multipath安裝(所有Node皆需安裝)
 ```
-# Multipath線上安裝
+# 方式一：線上安裝
 apt install multipath-tools -y
 
-# Multipath離線安裝
+# 方式二：離線安裝
 tar -xvf multipath.tar
 cd multipath
 dpkg -i *.deb
@@ -80,24 +78,85 @@ blacklist {
 reboot
 multipath -ll
 lsblk
+```
 
+## 建立Director over iSCSI(無法Share，每台Node各自獨立)
+```
+＃ fdisk
+root@pve1:~# fdisk /dev/mapper/mpatha
+
+Welcome to fdisk (util-linux 2.41).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS (MBR) disklabel with disk identifier 0x2f7cdcd9.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p):
+
+Using default response p.
+Partition number (1-4, default 1):
+First sector (8192-104857599, default 8192):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (8192-104857599, default 104857599):
+
+Created a new partition 1 of type 'Linux' and of size 50 GiB.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Re-reading the partition table failed.: Invalid argument
+
+The kernel still uses the old table. The new table will be used at the next reboot or after you run partprobe(8) or partx(8).
+
+# Format
+root@pve1:~# mkfs.xfs /dev/mapper/mpatha-part1
+meta-data=/dev/mapper/mpatha-part1 isize=512    agcount=16, agsize=819136 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
+         =                       exchange=0   metadir=0
+data     =                       bsize=4096   blocks=13106176, imaxpct=25
+         =                       sunit=2      swidth=1024 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=2 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+         =                       rgcount=0    rgsize=0 extents
+Discarding blocks...Done.
+
+# Mount
+root@pve1:~# mkdir -p /mnt/unity-iscsi
+
+root@pve1:~# mount /dev/mapper/mpatha-part1 /mnt/unity-iscsi
+
+root@pve1:~# df -h
+Filesystem                Size  Used Avail Use% Mounted on
+udev                       16G     0   16G   0% /dev
+tmpfs                     3.2G  1.2M  3.2G   1% /run
+/dev/mapper/pve-root       35G  3.3G   29G  11% /
+tmpfs                      16G   57M   16G   1% /dev/shm
+tmpfs                     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs                     5.0M     0  5.0M   0% /run/lock
+tmpfs                      16G     0   16G   0% /tmp
+/dev/fuse                 128M   28K  128M   1% /etc/pve
+tmpfs                     3.2G  4.0K  3.2G   1% /run/user/0
+tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+/dev/mapper/mpatha-part1   50G 1013M   49G   2% /mnt/unity-iscs
 ```
 
 ### 建置PV & VG
 ```
-# 單台Node設定即可
-root@pve1:~# fdisk -l
-.......................
-Disk /dev/mapper/mpatha: 30 GiB, 32212254720 bytes, 62914560 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 8192 bytes / 4194304 bytes
-
+# 每台Node皆需執行
 root@pve1:~# pvcreate /dev/mapper/mpatha
   Physical volume "/dev/mapper/mpatha" successfully created.
-  
-root@pve1:~# vgcreate andy_vg /dev/mapper/mpatha
-  Volume group "andy_vg" successfully created
+
+# 單台Node設定即可  
+root@pve1:~# vgcreate lvm_vg /dev/mapper/mpatha
+  Volume group "lvm_vg" successfully created
 
 # 若需建立LVM-thin，需建立LV
 root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool andy_vg
