@@ -30,23 +30,6 @@ sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascr
 systemctl restart pveproxy.service
 ```
 
-## iSCSI設定
-```
-# iSCSI Discovery
-iscsiadm -m discovery -t st -p 10.10.130.241:3260
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -l
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -l
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -p 10.10.130.241 --op update -n node.startup -v automatic
-iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 10.10.131.241 --op update -n node.startup -v automatic
-
-# 查詢PVE iqn
-cat /etc/iscsi/initiatorname.iscsi
-
-# 重新掃描Disk
-iscsiadm -m session --rescan
-lsblk
-```
-
 ## Multipath安裝(所有Node皆需安裝)
 ```
 # 方式一：線上安裝
@@ -77,6 +60,23 @@ blacklist {
 =======================
 reboot
 multipath -ll
+lsblk
+```
+
+## iSCSI設定
+```
+# iSCSI Discovery
+iscsiadm -m discovery -t st -p 10.10.130.241:3260
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -l
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a2 -p 10.10.130.241 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.1992-04.com.emc:cx.virt2549tprtqf.a3 -p 10.10.131.241 --op update -n node.startup -v automatic
+
+# 查詢PVE iqn
+cat /etc/iscsi/initiatorname.iscsi
+
+# 重新掃描Disk
+iscsiadm -m session --rescan
 lsblk
 ```
 
@@ -148,22 +148,53 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 /dev/mapper/mpatha-part1   50G 1013M   49G   2% /mnt/unity-iscs
 ```
 
-### 建置PV & VG
+## 建置LVM
 ```
-# 每台Node皆需執行
-root@pve1:~# pvcreate /dev/mapper/mpatha
+# LVM建置
+root@pve1:~# pvcreate /dev/mapper/mpatha  （每台Node都做）
   Physical volume "/dev/mapper/mpatha" successfully created.
 
-# 單台Node設定即可  
 root@pve1:~# vgcreate lvm_vg /dev/mapper/mpatha
   Volume group "lvm_vg" successfully created
 
-# 若需建立LVM-thin，需建立LV
-root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool andy_vg
-  Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
-  Logical volume "andy_thinpool" created.
-```
+# LVM-thin建置
+root@pve1:~# pvcreate /dev/mapper/mpatha
+  Physical volume "/dev/mapper/mpatha" successfully created.
 
+root@pve1:~# vgcreate lvmthin_vg /dev/mapper/mpatha
+  Volume group "lvm_vg" successfully created
+
+root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool lvmthin_vg
+  Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
+  Logical volume "thinpool" created.
+
+# 其餘Node執行下列命令
+root@pve2:~# pvscan
+  PV /dev/sda3            VG pve      lvm2 [<99.50 GiB / <12.38 GiB free]
+  PV /dev/mapper/mpatha   VG lvm_vg   lvm2 [<40.00 GiB / <40.00 GiB free]
+  Total: 2 [139.49 GiB] / in use: 2 [139.49 GiB] / in no VG: 0 [0   ]
+
+root@pve2:~# vgscan
+  Found volume group "pve" using metadata type lvm2
+  Found volume group "lvm_vg" using metadata type lvm2
+
+lvscan
+```
+## BTRFS建立
+```
+＃ 建立磁碟（每台Node皆需要設定）
+mkfs.btrfs /dev/sdb
+mkdir /mnt/btrfs-date
+mount /dev/sdb /mnt/btrfs-data
+btrfs subvolume create /mnt/btrfs-data/data
+
+# Multipath
+mkfs.btrfs /dev/mapper/mpatha -f
+mkdir /mnt/btrfs-iscsi
+mount /dev/mapper/mpatha /mnt/btrfs-iscsi
+btrfs subvolume create /mnt/btrfs-iscsi/data
+＃至GUI上建立Storage
+```
 ## 離線安裝Ceph
 ### Ceph安裝
 ```
