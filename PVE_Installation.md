@@ -185,7 +185,7 @@ mkdir /mnt/btrfs-date
 mount /dev/sdb /mnt/btrfs-data
 btrfs subvolume create /mnt/btrfs-data/data
 
-# Multipath
+# Multipath（中間二步驟，每台Node皆需要設定）
 mkfs.btrfs /dev/mapper/mpatha -f
 mkdir /mnt/btrfs-iscsi
 mount /dev/mapper/mpatha /mnt/btrfs-iscsi
