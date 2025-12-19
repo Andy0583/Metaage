@@ -1,28 +1,30 @@
 ## 初始設定
+### 時間校時
 ```
-# 時間校時
 nano /etc/chrony/chrony.conf
-```
-> ```
-> # 刪除
-> pool 2.debian.pool.ntp.org iburst
-> # 增加
-> server 172.12.25.51 iburst
-> ```
-```
+======================
+# 註解掉
+#pool 2.debian.pool.ntp.org iburst
+
+# 增加
+server 172.12.25.51 iburst
+======================
+
 systemctl enable chrony --now
 systemctl restart chronyd
 chronyc -a makestep
 date
-
-# 線上更新
+```
+### 線上更新
+```
 rm /etc/apt/sources.list.d/pve-enterprise.sources
 rm /etc/apt/sources.list.d/ceph.sources
 sed -i 's|http://ftp.debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.list
 sed -i 's|http://security.debian.org|https://mirrors.ustc.edu.cn/debian-se...|g' /etc/apt/sources.list
 apt update && apt full-upgrade -y
-
-# 移除未訂閱
+```
+### 移除未訂閱
+```
 sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 systemctl restart pveproxy.service
 ```
