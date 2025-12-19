@@ -154,29 +154,32 @@ root@pve1:~# pvcreate /dev/mapper/mpatha  （每台Node都做）
 root@pve1:~# vgcreate lvm_vg /dev/mapper/mpatha
   Volume group "lvm_vg" successfully created
 
-# LVM-thin建置
-root@pve1:~# pvcreate /dev/mapper/mpatha
-  Physical volume "/dev/mapper/mpatha" successfully created.
-
-root@pve1:~# vgcreate lvmthin_vg /dev/mapper/mpatha
-  Volume group "lvm_vg" successfully created
-
-root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool lvmthin_vg
+# 使用LVM-thin需多加下列步驟
+root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool lvm_vg
   Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
   Logical volume "thinpool" created.
-
-# 其餘Node執行下列命令
-root@pve2:~# pvscan
-  PV /dev/sda3            VG pve      lvm2 [<99.50 GiB / <12.38 GiB free]
-  PV /dev/mapper/mpatha   VG lvm_vg   lvm2 [<40.00 GiB / <40.00 GiB free]
-  Total: 2 [139.49 GiB] / in use: 2 [139.49 GiB] / in no VG: 0 [0   ]
-
-root@pve2:~# vgscan
-  Found volume group "pve" using metadata type lvm2
-  Found volume group "lvm_vg" using metadata type lvm2
-
-lvscan
 ```
+
+## 移除LVM
+```
+root@pve1:~# vgs
+  VG         #PV #LV #SN Attr   VSize   VFree
+  lvm_vg       1   0   0 wz--n- <30.00g <30.00g
+  lvmthin_vg   1   1   0 wz--n- <30.00g      0
+  pve          1   4   0 wz--n- <99.50g <12.38g
+  
+root@pve1:~# lvremove lvmthin_vg
+Do you really want to remove active logical volume lvmthin_vg/thinpool? [y/n]: y
+  Logical volume "thinpool" successfully removed.
+  
+root@pve1:~# vgremove lvmthin_vg
+  Volume group "lvmthin_vg" successfully removed
+
+# 每台Node皆需執行
+root@pve1:~# pvremove /dev/sdd
+  Labels on physical volume "/dev/sdd" successfully wiped.
+```
+
 ## BTRFS建立
 ```
 ＃ 建立磁碟（每台Node皆需要設定）
