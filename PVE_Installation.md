@@ -145,9 +145,9 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 /dev/mapper/mpatha-part1   50G 1013M   49G   2% /mnt/unity-iscs
 ```
 
-## 建置LVM
+## LVM
+### 建置LVM
 ```
-# LVM建置
 root@pve1:~# pvcreate /dev/mapper/mpatha  （每台Node都做）
   Physical volume "/dev/mapper/mpatha" successfully created.
 
@@ -160,7 +160,7 @@ root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool lvm_vg
   Logical volume "thinpool" created.
 ```
 
-## 移除LVM
+### 移除LVM
 ```
 root@pve1:~# vgs
   VG         #PV #LV #SN Attr   VSize   VFree
@@ -180,9 +180,9 @@ root@pve1:~# pvremove /dev/sdd
   Labels on physical volume "/dev/sdd" successfully wiped.
 ```
 
-## BTRFS建立
+## BTRFS
+### 建立BTRFS
 ```
-# 建立
 root@pve1:~# mkfs.btrfs /dev/mapper/mpatha -f
 btrfs-progs v6.14
 See https://btrfs.readthedocs.io for more information.
@@ -211,8 +211,10 @@ root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
 
 root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/date
 Create subvolume '/mnt/btrfs-iscsi/date'
+```
 
-# 移除
+### 移除BTRFS
+```
 root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
 
 root@pve1:~# btrfs subvolume delete /mnt/btrfs-iscsi/date
@@ -223,7 +225,6 @@ root@pve1:~# umount /mnt/btrfs-iscsi
 root@pve1:~# rmdir /mnt/btrfs-iscsi
 ```
 ## 離線安裝Ceph
-### Ceph安裝
 ```
 #上傳ceph至PVE上
 cd ceph
