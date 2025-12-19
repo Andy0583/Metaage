@@ -27,12 +27,12 @@ sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascr
 systemctl restart pveproxy.service
 ```
 
-## Multipath安裝(所有Node皆需安裝)
+## Multipath安裝
 ```
-# 方式一：線上安裝
+# 方式一：線上安裝(所有Node皆需安裝)
 apt install multipath-tools -y
 
-# 方式二：離線安裝
+# 方式二：離線安裝(所有Node皆需安裝)
 tar -xvf multipath.tar
 cd multipath
 dpkg -i *.deb
@@ -77,19 +77,13 @@ iscsiadm -m session --rescan
 lsblk
 ```
 
-## 建立Director over iSCSI(無法Share，每台Node各自獨立)
+## 建立Director over iSCSI
 ```
 ＃ fdisk
 root@pve1:~# fdisk /dev/mapper/mpatha
 
-Welcome to fdisk (util-linux 2.41).
-Changes will remain in memory only, until you decide to write them.
-Be careful before using the write command.
-
-Device does not contain a recognized partition table.
-Created a new DOS (MBR) disklabel with disk identifier 0x2f7cdcd9.
-
 Command (m for help): n
+
 Partition type
    p   primary (0 primary, 0 extended, 4 free)
    e   extended (container for logical partitions)
@@ -100,30 +94,10 @@ Partition number (1-4, default 1):
 First sector (8192-104857599, default 8192):
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (8192-104857599, default 104857599):
 
-Created a new partition 1 of type 'Linux' and of size 50 GiB.
-
 Command (m for help): w
-The partition table has been altered.
-Calling ioctl() to re-read partition table.
-Re-reading the partition table failed.: Invalid argument
-
-The kernel still uses the old table. The new table will be used at the next reboot or after you run partprobe(8) or partx(8).
 
 # Format
 root@pve1:~# mkfs.xfs /dev/mapper/mpatha-part1
-meta-data=/dev/mapper/mpatha-part1 isize=512    agcount=16, agsize=819136 blks
-         =                       sectsz=512   attr=2, projid32bit=1
-         =                       crc=1        finobt=1, sparse=1, rmapbt=1
-         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
-         =                       exchange=0   metadir=0
-data     =                       bsize=4096   blocks=13106176, imaxpct=25
-         =                       sunit=2      swidth=1024 blks
-naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
-log      =internal log           bsize=4096   blocks=16384, version=2
-         =                       sectsz=512   sunit=2 blks, lazy-count=1
-realtime =none                   extsz=4096   blocks=0, rtextents=0
-         =                       rgcount=0    rgsize=0 extents
-Discarding blocks...Done.
 
 # Mount
 root@pve1:~# mkdir -p /mnt/unity-iscsi
