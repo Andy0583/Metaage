@@ -182,18 +182,45 @@ root@pve1:~# pvremove /dev/sdd
 
 ## BTRFS建立
 ```
-＃ 建立磁碟（每台Node皆需要設定）
-mkfs.btrfs /dev/sdb
-mkdir /mnt/btrfs-date
-mount /dev/sdb /mnt/btrfs-data
-btrfs subvolume create /mnt/btrfs-data/data
+# 建立
+root@pve1:~# mkfs.btrfs /dev/mapper/mpatha -f
+btrfs-progs v6.14
+See https://btrfs.readthedocs.io for more information.
 
-# Multipath（中間二步驟，每台Node皆需要設定）
-mkfs.btrfs /dev/mapper/mpatha -f
-mkdir /mnt/btrfs-iscsi
-mount /dev/mapper/mpatha /mnt/btrfs-iscsi
-btrfs subvolume create /mnt/btrfs-iscsi/data
-＃至GUI上建立Storage
+Label:              (null)
+UUID:               d3df7d66-ea7f-4e93-9e27-8b6dfe7bf455
+Node size:          16384
+Sector size:        4096        (CPU page size: 4096)
+Filesystem size:    40.00GiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP             256.00MiB
+  System:           DUP               8.00MiB
+SSD detected:       no
+Zoned device:       no
+Features:           extref, skinny-metadata, no-holes, free-space-tree
+Checksum:           crc32c
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1    40.00GiB  /dev/mapper/mpatha
+
+root@pve1:~# mkdir /mnt/btrfs-iscsi
+
+root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
+
+root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/date
+Create subvolume '/mnt/btrfs-iscsi/date'
+
+# 移除
+root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
+
+root@pve1:~# btrfs subvolume delete /mnt/btrfs-iscsi/date
+Delete subvolume 256 (no-commit): '/mnt/btrfs-iscsi/date'
+
+root@pve1:~# umount /mnt/btrfs-iscsi
+
+root@pve1:~# rmdir /mnt/btrfs-iscsi
 ```
 ## 離線安裝Ceph
 ### Ceph安裝
