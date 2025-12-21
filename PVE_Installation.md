@@ -183,16 +183,16 @@ root@pve1:~# mkdir /mnt/btrfs-iscsi
 
 root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
 
-root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/date
-Create subvolume '/mnt/btrfs-iscsi/date'
+root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/data
+Create subvolume '/mnt/btrfs-iscsi/data'
 ```
 
 ### 移除BTRFS
 ```
 root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
 
-root@pve1:~# btrfs subvolume delete /mnt/btrfs-iscsi/date
-Delete subvolume 256 (no-commit): '/mnt/btrfs-iscsi/date'
+root@pve1:~# btrfs subvolume delete /mnt/btrfs-iscsi/data
+Delete subvolume 256 (no-commit): '/mnt/btrfs-iscsi/data'
 
 root@pve1:~# umount /mnt/btrfs-iscsi
 
