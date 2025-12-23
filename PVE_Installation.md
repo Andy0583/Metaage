@@ -158,33 +158,15 @@ root@pve1:~# pvremove /dev/sdd
 ### 建立BTRFS
 ```
 root@pve1:~# mkfs.btrfs /dev/mapper/mpatha -f
-btrfs-progs v6.14
-See https://btrfs.readthedocs.io for more information.
-
-Label:              (null)
-UUID:               d3df7d66-ea7f-4e93-9e27-8b6dfe7bf455
-Node size:          16384
-Sector size:        4096        (CPU page size: 4096)
-Filesystem size:    40.00GiB
-Block group profiles:
-  Data:             single            8.00MiB
-  Metadata:         DUP             256.00MiB
-  System:           DUP               8.00MiB
-SSD detected:       no
-Zoned device:       no
-Features:           extref, skinny-metadata, no-holes, free-space-tree
-Checksum:           crc32c
-Number of devices:  1
-Devices:
-   ID        SIZE  PATH
-    1    40.00GiB  /dev/mapper/mpatha
 
 root@pve1:~# mkdir /mnt/btrfs-iscsi
 
 root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
 
 root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/data
-Create subvolume '/mnt/btrfs-iscsi/data'
+
+# 其餘Node，只需進行Mount
+root@pve2:~# mount /dev/mapper/mpatha /mnt/btrfs-iscs
 ```
 
 ### 移除BTRFS
