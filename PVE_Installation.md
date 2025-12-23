@@ -77,7 +77,7 @@ iscsiadm -m session --rescan
 lsblk
 ```
 
-## Director over iSCSI
+## Directory over iSCSI
 ```
 ＃ fdisk
 root@pve1:~# fdisk /dev/mapper/mpatha
