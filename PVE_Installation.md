@@ -12,6 +12,12 @@ systemctl enable chrony --now
 systemctl restart chronyd
 chronyc -a makestep
 date
+
+# 如果差距太大，先使用手動修正
+systemctl stop chrony
+timedatectl set-time "2025-12-23 22:25:00"
+systemctl start chrony
+chronyc -a makestep
 ```
 ### 線上更新
 ```
@@ -157,13 +163,21 @@ root@pve1:~# pvremove /dev/sdd
 ## BTRFS
 ### 建立BTRFS
 ```
-root@pve1:~# mkfs.btrfs /dev/mapper/mpatha -f
+# 單顆磁碟：
+mkfs.btrfs -L data-btrfs /dev/sdb
 
-root@pve1:~# mkdir /mnt/btrfs-iscsi
+# 若兩顆磁碟做 RAID 1：
+mkfs.btrfs -m raid1 -d raid1 -L data-btrfs /dev/sdb /dev/sdc
 
-root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
+# 建立掛載點：
+mkdir /mnt/data-btrfs
 
-root@pve1:~# btrfs subvolume create /mnt/btrfs-iscsi/data
+# 編輯 /etc/fstab 讓系統開機自動掛載
+blkid /dev/sdb 查看 UUID
+UUID=你的磁碟UUID /mnt/data-btrfs btrfs defaults 0 0
+mount -a
+
+＃ PVE Web UI 新增BTRFS，掛載/mnt/data-btrfs
 
 # 其餘Node，只需進行Mount
 root@pve2:~# mount /dev/mapper/mpatha /mnt/btrfs-iscs
