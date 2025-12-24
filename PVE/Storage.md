@@ -124,8 +124,23 @@ iscsiadm -m session --rescan
 lsblk
 ```
 
-## 3、PVE Storage架構
+## 3、PVE Storage Type
+### PVE Storage架構
 ![PVE Storage架構](./image/001.png)
+
+### 主要PVE Storage比較
+| Storage Type | Content | Disk | Share | Snapshot |
+|:------:|:------:|:------:|:------:|:------:|
+| Diretory | All | Local / External | ❌ | ✅ |
+| LVM | Image | Local / External | ✅ | ❌ |
+| LVM-Thin | Image | Local / External | ❌ | ✅ |
+| BTRFS | All | Local / External | ✅ | ✅ |
+| NFS | All | External | ✅ | ❌ |
+| SMV / CIFS | All | External | ✅ | ❌ |
+| iSCSI | Image | External | ❌ | ❌ |
+| Local-LVM | Image | Local | ❌ | ✅ |
+| Ceph | Image | Local | ✅ | ✅ |
+| ZFS | Image | Local | ❌ | ✅ |
 
 ## 4、local / local-lvm
 每台Node預設皆有兩個Local Storage。<br>
