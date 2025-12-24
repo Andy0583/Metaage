@@ -202,6 +202,7 @@ root@pve1:~# lvcreate -l 100%FREE --thinpool thinpool lvm_vg
   Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
   Logical volume "thinpool" created.
 ```
+![LVM Storage](./image/004.png)
 
 ### 移除LVM
 ```
@@ -266,7 +267,21 @@ umount /mnt/data-btrfs
 
 rmdir /mnt/data-btrfs
 ```
-## 7、Ceph
+
+## 8、ZFS
+### ZFS核心優勢
+![ZFS Storage](./image/005.png)
+### 其它限制
+1.ZFS每個Node各自獨立，且只能為直接Disk，外部掛載至PVE無法使用。 <br>
+2.ZFS 非常吃記憶體（用作快取），建議4GB 基礎容量 + 每 1TB 磁碟空間配置 1GB RAM。<br>
+3.ZFS 不建議運行於硬體 RAID 控制器之上。
+```
+#上傳ceph至PVE上
+cd ceph
+dpkg -i *.deb
+```
+
+## 9、Ceph
 ```
 #上傳ceph至PVE上
 cd ceph
