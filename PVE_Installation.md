@@ -101,7 +101,7 @@ lsblk
 ![PVE 架構](./image/001.png)
 
 ## Directory
-Directory 是以目錄方式或本機整顆磁碟，當成Storage。
+Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。
 
 ### Directory over iSCSI
 ```
@@ -181,6 +181,10 @@ root@pve1:~# pvremove /dev/sdd
 ```
 
 ## BTRFS
+1.內建軟體RAID。 <br>
+2.可放置Block及File。 <br>
+3.可建置多個子磁碟。
+
 ### 建立BTRFS
 ```
 # 單顆磁碟：
@@ -192,27 +196,32 @@ mkfs.btrfs -m raid1 -d raid1 -L data-btrfs /dev/sdb /dev/sdc
 # 建立掛載點：
 mkdir /mnt/data-btrfs
 
+# 查看 UUID（若為RAID 1，兩顆UUID應為一致）
+blkid /dev/sdb 
+
 # 編輯 /etc/fstab 讓系統開機自動掛載
-blkid /dev/sdb 查看 UUID
-UUID=你的磁碟UUID /mnt/data-btrfs btrfs defaults 0 0
+nano /etc/fstab
+UUID=87547b3d-b019-4578-a965-02883aa6a830 /mnt/data-btrfs btrfs defaults 0 0
 mount -a
+df -h
 
 ＃ PVE Web UI 新增BTRFS，掛載/mnt/data-btrfs
 
-# 其餘Node，只需進行Mount
-root@pve2:~# mount /dev/mapper/mpatha /mnt/btrfs-iscs
+# 其餘Node若需使用(才能進行Migrate)，只需進行Format / Mount
+mkfs.btrfs -m raid1 -d raid1 -L data-btrfs /dev/sdb /dev/sdc
+mount UUID=486307f1-a69c-4364-8b0f-c1d049302dd2 /mnt/data-btrfs
 ```
 
 ### 移除BTRFS
 ```
-root@pve1:~# mount /dev/mapper/mpatha /mnt/btrfs-iscsi
+＃ PVE Web UI 刪除TRFS Storage
 
-root@pve1:~# btrfs subvolume delete /mnt/btrfs-iscsi/data
-Delete subvolume 256 (no-commit): '/mnt/btrfs-iscsi/data'
+# 若有建立子磁碟才需要執行
+btrfs subvolume delete /mnt/data-btrfs
 
-root@pve1:~# umount /mnt/btrfs-iscsi
+umount /mnt/data-btrfs
 
-root@pve1:~# rmdir /mnt/btrfs-iscsi
+rmdir /mnt/data-btrfs
 ```
 ## 離線安裝Ceph
 ```
