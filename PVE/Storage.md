@@ -269,3 +269,27 @@ rmdir /mnt/data-btrfs
 cd ceph
 dpkg -i *.deb
 ```
+## 8、NFS
+主要掛載點位於『/mnt/pve/<storage_name>』，並為多節點共用。
+```
+# 確認NFS Server可掛載Export
+root@pve1:~# showmount -e 172.22.46.242
+Export list for 172.22.46.242:
+/nfs1 (everyone)
+/nfs3 (everyone)
+/nfs4 (everyone)
+/nfs2 (everyone)
+
+# 建立NFS Storage
+pvesm add nfs NFS_1 --server 172.22.46.242 --export /nfs1 --path /mnt/pve/NFS_1 --content images,iso,backup
+
+# 刪除NFS Storage
+pvesm remove NFS_1
+
+# 查看Storage
+root@pve1:~# pvesm status
+Name             Type     Status           Total            Used       Available        %
+NFS_1             nfs     active        20971520         5750144        15221376   27.42%
+local             dir     active        35679784         5495612        28339540   15.40%
+local-lvm     lvmthin     active        44298240         3707762        40590477    8.37%
+```
