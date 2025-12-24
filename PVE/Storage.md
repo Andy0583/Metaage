@@ -290,11 +290,6 @@ rmdir /mnt/data-btrfs
 1.ZFS每個Node各自獨立，且只能為直接Disk，外部掛載至PVE無法使用。 <br>
 2.ZFS 非常吃記憶體（用作快取），建議4GB 基礎容量 + 每 1TB 磁碟空間配置 1GB RAM。<br>
 3.ZFS 不建議運行於硬體 RAID 控制器之上。
-```
-#上傳ceph至PVE上
-cd ceph
-dpkg -i *.deb
-```
 
 ## 9、Ceph
 ![Ceph Storage](./image/003.png)
