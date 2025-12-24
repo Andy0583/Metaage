@@ -211,7 +211,7 @@ df -h
 
 ＃ PVE Web UI 新增BTRFS，掛載/mnt/data-btrfs
 
-# 其餘Node若需使用(才能進行Migrate)，只需進行Format / Mount
+# 其餘Node若需使用(才能進行Migrate)，需進行Format / Mount
 mkfs.btrfs -m raid1 -d raid1 -L data-btrfs /dev/sdb /dev/sdc
 mount UUID=486307f1-a69c-4364-8b0f-c1d049302dd2 /mnt/data-btrfs
 ```
