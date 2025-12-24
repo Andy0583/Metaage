@@ -303,3 +303,4 @@ dpkg -i *.deb
 cd ceph
 dpkg -i *.deb
 ```
+![Ceph Storage](./image/006.png)
