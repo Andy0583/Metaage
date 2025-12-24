@@ -143,18 +143,18 @@ lsblk
 | ZFS | Image | Local | ❌ | ✅ | Replication需使用ZFS Storage |
 
 ## 4、local / local-lvm
-每台Node預設皆有兩個Local Storage。<br>
-1.local（Directory）：File level storage 可存放ISO、Container Template、備份檔案等。<br>
-2.local-lvm（LVM-Thin）： Block level storage 只能放置VM或Container的Image。
+* 每台Node預設皆有兩個Local Storage。<br>
+* local（Directory）：File level storage 可存放ISO、Container Template、備份檔案等。<br>
+* local-lvm（LVM-Thin）： Block level storage 只能放置VM或Container的Image。
 
 ## 5、Directory
-Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。<br>
-1.為File-based類型Storage。<br>
-2.只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。<br>
+* Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。<br>
+* 為File-based類型Storage。<br>
+* 只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。<br>
 
 ### 建立方式
-1.於DC建立會將每個Node資料夾當成Storage使用，並會同時建立時三台Node相同資料夾。<br>
-2.於Node建立可用整顆Local Disk，當成Storage使用，建立時需選擇File system ext4/xfs。
+* 於DC建立會將每個Node資料夾當成Storage使用，並會同時建立時三台Node相同資料夾。<br>
+* 於Node建立可用整顆Local Disk，當成Storage使用，建立時需選擇File system ext4/xfs。
 
 ### Directory over iSCSI
 ```
@@ -200,9 +200,9 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 
 ## 6、LVM
 ![LVM 架構](./image/002.png) <br>
-LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。<br>
-1.LVM：可當成Share Storage使用（若使用iSCSI / FC掛載空間），不支援Snapshot、Thin Provisioning。<br>
-2.LVM-Thin：無法與Node共用，支援Snapshot、Thin Provisioning。
+* LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。<br>
+* LVM：可當成Share Storage使用（若使用iSCSI / FC掛載空間），不支援Snapshot、Thin Provisioning。<br>
+* LVM-Thin：無法與Node共用，支援Snapshot、Thin Provisioning。
 
 ### 建置LVM
 ```
@@ -240,9 +240,9 @@ root@pve1:~# pvremove /dev/sdd
 ```
 
 ## 7、BTRFS
-1.內建軟體RAID。 <br>
-2.可放置Block及File。 <br>
-3.可建置多個子磁碟。
+* 內建軟體RAID。 <br>
+* 可放置Block及File。 <br>
+* 可建置多個子磁碟。
 
 ### 建立BTRFS
 ```
@@ -273,7 +273,7 @@ mount UUID=486307f1-a69c-4364-8b0f-c1d049302dd2 /mnt/data-btrfs
 
 ### 移除BTRFS
 ```
-＃ PVE Web UI 刪除TRFS Storage
+# PVE Web UI 刪除TRFS Storage
 
 # 若有建立子磁碟才需要執行
 btrfs subvolume delete /mnt/data-btrfs
@@ -287,9 +287,9 @@ rmdir /mnt/data-btrfs
 ### ZFS核心優勢
 ![ZFS Storage](./image/005.png)
 ### 其它限制
-1.ZFS每個Node各自獨立，且只能為直接Disk，外部掛載至PVE無法使用。 <br>
-2.ZFS 非常吃記憶體（用作快取），建議4GB 基礎容量 + 每 1TB 磁碟空間配置 1GB RAM。<br>
-3.ZFS 不建議運行於硬體 RAID 控制器之上。
+* ZFS每個Node各自獨立，且只能為直接Disk，外部掛載至PVE無法使用。 <br>
+* ZFS 非常吃記憶體（用作快取），建議4GB 基礎容量 + 每 1TB 磁碟空間配置 1GB RAM。<br>
+* ZFS 不建議運行於硬體 RAID 控制器之上。
 
 ## 9、Ceph
 ![Ceph Storage](./image/003.png)
