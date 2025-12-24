@@ -200,8 +200,8 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 
 ## 6、LVM
 ![LVM 架構](./image/002.png) <br>
-LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。
-1.LVM：可當成Share Storage使用（若使用iSCSI / FC掛載空間），不支援Snapshot、Thin Provisioning。
+LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。<br>
+1.LVM：可當成Share Storage使用（若使用iSCSI / FC掛載空間），不支援Snapshot、Thin Provisioning。<br>
 2.LVM-Thin：無法與Node共用，支援Snapshot、Thin Provisioning。
 
 ### 建置LVM
