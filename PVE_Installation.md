@@ -48,9 +48,7 @@ sed -i 's|http://ftp.debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.
 sed -i 's|http://security.debian.org|https://mirrors.ustc.edu.cn/debian-se...|g' /etc/apt/sources.list
 apt update && apt full-upgrade -y
 ```
-
-
-## Multipath安裝
+### Multipath安裝
 ```
 # 方式一：線上安裝(所有Node皆需安裝)
 apt install multipath-tools -y
@@ -83,7 +81,7 @@ multipath -ll
 lsblk
 ```
 
-## iSCSI設定
+### iSCSI設定
 ```
 # iSCSI Discovery
 iscsiadm -m discovery -t st -p 10.10.130.241:3260
@@ -99,6 +97,8 @@ cat /etc/iscsi/initiatorname.iscsi
 iscsiadm -m session --rescan
 lsblk
 ```
+## PVE Storage架構
+![PVE 架構](./image/001.png)
 
 ## Directory over iSCSI
 ```
