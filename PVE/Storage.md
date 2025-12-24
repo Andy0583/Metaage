@@ -129,18 +129,18 @@ lsblk
 ![PVE Storage架構](./image/001.png)
 
 ### 主要PVE Storage比較
-| Storage Type | Content | Disk | Share | Snapshot |
-|:------:|:------:|:------:|:------:|:------:|
-| Diretory | All | Local / External | ❌ | ✅ |
-| LVM | Image | Local / External | ✅ | ❌ |
-| LVM-Thin | Image | Local / External | ❌ | ✅ |
-| BTRFS | All | Local / External | ✅ | ✅ |
-| NFS | All | External | ✅ | ❌ |
-| SMV / CIFS | All | External | ✅ | ❌ |
-| iSCSI | Image | External | ❌ | ❌ |
-| Local-LVM | Image | Local | ❌ | ✅ |
-| Ceph | Image | Local | ✅ | ✅ |
-| ZFS | Image | Local | ❌ | ✅ |
+| Storage Type | Content | Disk | Share | Snapshot | Note |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| Diretory | All | Local / External | ❌ | ✅ | 使用本機目錄或Disk，成為Storage |
+| LVM | Image | Local / External | ✅ | ❌ | 可當成Share Storage使用（需使用外部磁碟） |
+| LVM-Thin | Image | Local / External | ❌ | ✅ | 支援Snapshot、Thin Provisioning |
+| BTRFS | All | Local / External | ✅ | ✅ | 內建軟體RAID，並有資料驗證功能 |
+| NFS | All | External | ✅ | ❌ | 使用外部儲存NAS，進行NFS存取 |
+| SMB / CIFS | All | External | ✅ | ❌ | 使用外部儲存NAS，進行CIFS存取 |
+| iSCSI | Image | External | ❌ | ❌ | 類似VMWare RDM，將外部空間掛載給Guest使用|
+| Local-LVM | Image | Local | ❌ | ✅ | 預設Storage |
+| Ceph | Image | Local | ✅ | ✅ | 分散式儲存，建置HCI需使用此Storage |
+| ZFS | Image | Local | ❌ | ✅ | Replication需使用ZFS Storage |
 
 ## 4、local / local-lvm
 每台Node預設皆有兩個Local Storage。<br>
