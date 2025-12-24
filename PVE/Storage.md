@@ -1,4 +1,4 @@
-## LAB環境資訊
+## 1、LAB環境資訊
 | PVE Host | 第一組PVE | 第二組PVE | 第三組PVE | 第四組PVE |
 |------|------|------|------|------|
 | MGMT IP | 172.22.46.231~233 | 172.22.46.234~236 | 172.22.46.237~239 | 172.22.46.221~223 |
@@ -12,7 +12,7 @@
 |------|------|------|------|
 | UnityVSA | 172.22.46.241 | 10.10.130.241 | 10.10.130.241 |
 
-## 初始設定
+## 2、初始設定
 ### 時間校時
 ```
 nano /etc/chrony/chrony.conf
@@ -130,10 +130,10 @@ cat /etc/iscsi/initiatorname.iscsi
 iscsiadm -m session --rescan
 lsblk
 ```
-## PVE Storage架構
+## 3、PVE Storage架構
 ![PVE Storage架構](./image/001.png)
 
-## Directory
+## 4、Directory
 Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。<br>
 1.為File-based類型Storage。<br>
 2.只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。
@@ -180,7 +180,7 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 /dev/mapper/mpatha-part1   50G 1013M   49G   2% /mnt/unity-iscs
 ```
 
-## LVM
+## 5、LVM
 ![LVM 架構](./image/002.png) <br>
 LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。
 
@@ -219,7 +219,7 @@ root@pve1:~# pvremove /dev/sdd
   Labels on physical volume "/dev/sdd" successfully wiped.
 ```
 
-## BTRFS
+## 6、BTRFS
 1.內建軟體RAID。 <br>
 2.可放置Block及File。 <br>
 3.可建置多個子磁碟。
@@ -262,7 +262,7 @@ umount /mnt/data-btrfs
 
 rmdir /mnt/data-btrfs
 ```
-## Ceph
+## 7、Ceph
 ```
 #上傳ceph至PVE上
 cd ceph
