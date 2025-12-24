@@ -282,6 +282,7 @@ dpkg -i *.deb
 ```
 
 ## 9、Ceph
+![Ceph Storage](./image/003.png)
 ```
 #上傳ceph至PVE上
 cd ceph
