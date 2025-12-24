@@ -123,13 +123,23 @@ cat /etc/iscsi/initiatorname.iscsi
 iscsiadm -m session --rescan
 lsblk
 ```
+
 ## 3、PVE Storage架構
 ![PVE Storage架構](./image/001.png)
 
-## 4、Directory
+## 4、local / local-lvm
+每台Node預設皆有兩個Local Storage。<br>
+1.local（Directory）：File level storage 可存放ISO、Container Template、備份檔案等。<br>
+2.local-lvm（LVM-Thin）： Block level storage 只能放置VM或Container的Image。
+
+## 5、Directory
 Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。<br>
 1.為File-based類型Storage。<br>
-2.只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。
+2.只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。<br>
+
+### 建立方式
+1.於DC建立會將每個Node資料夾當成Storage使用，並會同時建立時三台Node相同資料夾。<br>
+2.於Node建立可用整顆Local Disk，當成Storage使用，建立時需選擇File system ext4/xfs。
 
 ### Directory over iSCSI
 ```
@@ -173,10 +183,11 @@ tmpfs                     1.0M     0  1.0M   0% /run/credentials/getty@tty1.serv
 /dev/mapper/mpatha-part1   50G 1013M   49G   2% /mnt/unity-iscs
 ```
 
-## 5、LVM
+## 6、LVM
 ![LVM 架構](./image/002.png) <br>
 LVM可將可用磁碟空間，融合成一個Volume Group，再彈性劃分成隨意大小的邏輯磁碟區（LV）。
-
+1.LVM：可當成Share Storage使用（若使用iSCSI / FC掛載空間），不支援Snapshot、Thin Provisioning。
+2.LVM-Thin：無法與Node共用，支援Snapshot、Thin Provisioning。
 
 ### 建置LVM
 ```
@@ -212,7 +223,7 @@ root@pve1:~# pvremove /dev/sdd
   Labels on physical volume "/dev/sdd" successfully wiped.
 ```
 
-## 6、BTRFS
+## 7、BTRFS
 1.內建軟體RAID。 <br>
 2.可放置Block及File。 <br>
 3.可建置多個子磁碟。
