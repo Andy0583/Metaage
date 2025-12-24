@@ -15,7 +15,7 @@ date
 
 # 如果差距太大，先使用手動修正
 systemctl stop chrony
-timedatectl set-time "2025-12-23 22:25:00"
+timedatectl set-time "2025-12-24 08:01:00"
 systemctl start chrony
 chronyc -a makestep
 ```
