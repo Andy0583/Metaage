@@ -100,8 +100,6 @@ iscsiadm -m session --rescan
 lsblk
 ```
 
-![PVE 架構](./image/001.png)
-
 ## Directory over iSCSI
 ```
 ＃ fdisk
