@@ -100,7 +100,10 @@ lsblk
 ## PVE Storage架構
 ![PVE 架構](./image/001.png)
 
-## Directory over iSCSI
+## Directory
+Directory 是以目錄方式或本機整顆磁碟，當成Storage。
+
+### Directory over iSCSI
 ```
 ＃ fdisk
 root@pve1:~# fdisk /dev/mapper/mpatha
