@@ -48,6 +48,7 @@ apt update && apt full-upgrade -y
 ```
 ### 常用指令
 ```
+# 顯示所有Storage狀態
 root@pve1:~# pvesm status
 Name             Type     Status           Total            Used       Available        %
 BTRFS           btrfs     active        41943040            5952        41401344    0.01%
