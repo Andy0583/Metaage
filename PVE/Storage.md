@@ -51,20 +51,9 @@ apt update && apt full-upgrade -y
 # 顯示所有Storage狀態
 root@pve1:~# pvesm status
 Name             Type     Status           Total            Used       Available        %
-BTRFS           btrfs     active        41943040            5952        41401344    0.01%
-CIFS             cifs     active        31457280         1584432        29872848    5.04%
-LVM               lvm   inactive               0               0               0    0.00%
-LVM-Thin      lvmthin     active        52318208               0        52318208    0.00%
-NFS               nfs     active        31457280        17157120        14300160   54.54%
-ceph_fs        cephfs     active        39346176               0        39346176    0.00%
-ceph_pool         rbd     active        39346901               9        39346892    0.00%
-ceph_rbd          rbd     active        39346901               9        39346892    0.00%
-directory         dir     active        86886448        16036200        66390728   18.46%
-iSCSI           iscsi     active               0               0               0    0.00%
-local             dir     active        86886448        16036200        66390728   18.46%
-local-lvm     lvmthin     active       195497984               0       195497984    0.00%
-zfs           zfspool     active        29966336             840        29965496    0.00%
-zfs_pool      zfspool     active        29966336             840        29965496    0.00%
+NFS_1             nfs     active        20971520         5750144        15221376   27.42%
+local             dir     active        35679784         5495612        28339540   15.40%
+local-lvm     lvmthin     active        44298240         3707762        40590477    8.37%
 
 # 顯示Storage Info
 root@pve1:~# qemu-img info /mnt/pve/NFS/images/101/vm-101-disk-0.raw
@@ -268,28 +257,4 @@ rmdir /mnt/data-btrfs
 #上傳ceph至PVE上
 cd ceph
 dpkg -i *.deb
-```
-## 8、NFS
-主要掛載點位於『/mnt/pve/<storage_name>』，並為多節點共用。
-```
-# 確認NFS Server可掛載Export
-root@pve1:~# showmount -e 172.22.46.242
-Export list for 172.22.46.242:
-/nfs1 (everyone)
-/nfs3 (everyone)
-/nfs4 (everyone)
-/nfs2 (everyone)
-
-# 建立NFS Storage
-pvesm add nfs NFS_1 --server 172.22.46.242 --export /nfs1 --path /mnt/pve/NFS_1 --content images,iso,backup
-
-# 刪除NFS Storage
-pvesm remove NFS_1
-
-# 查看Storage
-root@pve1:~# pvesm status
-Name             Type     Status           Total            Used       Available        %
-NFS_1             nfs     active        20971520         5750144        15221376   27.42%
-local             dir     active        35679784         5495612        28339540   15.40%
-local-lvm     lvmthin     active        44298240         3707762        40590477    8.37%
 ```
