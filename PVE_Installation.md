@@ -1,8 +1,18 @@
 ## LAB環境資訊
-| 第一組PVE | 第二組PVE | 第三組PVE | 第四組PVE |
-|------|------|------|------|
-| 172.22.46.231~233 | 172.22.46.234~236 | 172.22.46.237~239 | 172.22.46.221~223 |
+| PVE Host | 第一組PVE | 第二組PVE | 第三組PVE | 第四組PVE |
+|------|------|------|------|------|
+| MGMT IP | 172.22.46.231~233 | 172.22.46.234~236 | 172.22.46.237~239 | 172.22.46.221~223 |
+| iSCSI 130 | 10.10.130.231 | 10.10.130.234 | 10.10.130.237 | 10.10.130.221 |
+| iSCSI 131 | 10.10.131.231 | 10.10.131.234 | 10.10.131.237 | 10.10.131.221 |
+| Replication | 10.10.10.231 | 10.10.10.234 | 10.10.10.237 | 10.10.10.221 |
+| NFS | 172.22.46.242/nfs1 | 172.22.46.242/nfs2 | 172.22.46.242/nfs3 | 172.22.46.242/nfs4 |
+| CIFS | 172.22.46.243/cifs1 | 172.22.46.243/cis2 | 172.22.46.243/cifs3 | 172.22.46.243/cifs4 |
 
+| UnityVSA | IP |
+|------|------|
+| MGMT IP | 172.22.46.241 |
+| iSCSI 130 | 10.10.130.241 |
+| iSCSI 131 | 10.10.130.241 |
 
 ## 初始設定
 ### 時間校時
@@ -25,6 +35,11 @@ timedatectl set-time "2025-12-24 08:01:00"
 systemctl start chrony
 chronyc -a makestep
 ```
+### 移除未訂閱
+```
+sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+systemctl restart pveproxy.service
+```
 ### 線上更新
 ```
 rm /etc/apt/sources.list.d/pve-enterprise.sources
@@ -33,11 +48,7 @@ sed -i 's|http://ftp.debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.
 sed -i 's|http://security.debian.org|https://mirrors.ustc.edu.cn/debian-se...|g' /etc/apt/sources.list
 apt update && apt full-upgrade -y
 ```
-### 移除未訂閱
-```
-sed -i.bak "s/data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
-systemctl restart pveproxy.service
-```
+
 
 ## Multipath安裝
 ```
