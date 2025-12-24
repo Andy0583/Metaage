@@ -46,6 +46,41 @@ sed -i 's|http://ftp.debian.org|https://mirrors.ustc.edu.cn|g' /etc/apt/sources.
 sed -i 's|http://security.debian.org|https://mirrors.ustc.edu.cn/debian-se...|g' /etc/apt/sources.list
 apt update && apt full-upgrade -y
 ```
+### 常用指令
+```
+root@pve1:~# pvesm status
+Name             Type     Status           Total            Used       Available        %
+BTRFS           btrfs     active        41943040            5952        41401344    0.01%
+CIFS             cifs     active        31457280         1584432        29872848    5.04%
+LVM               lvm   inactive               0               0               0    0.00%
+LVM-Thin      lvmthin     active        52318208               0        52318208    0.00%
+NFS               nfs     active        31457280        17157120        14300160   54.54%
+ceph_fs        cephfs     active        39346176               0        39346176    0.00%
+ceph_pool         rbd     active        39346901               9        39346892    0.00%
+ceph_rbd          rbd     active        39346901               9        39346892    0.00%
+directory         dir     active        86886448        16036200        66390728   18.46%
+iSCSI           iscsi     active               0               0               0    0.00%
+local             dir     active        86886448        16036200        66390728   18.46%
+local-lvm     lvmthin     active       195497984               0       195497984    0.00%
+zfs           zfspool     active        29966336             840        29965496    0.00%
+zfs_pool      zfspool     active        29966336             840        29965496    0.00%
+
+# 顯示Storage Info
+root@pve1:~# qemu-img info /mnt/pve/NFS/images/101/vm-101-disk-0.raw
+image: /mnt/pve/NFS/images/101/vm-101-disk-0.raw
+file format: raw
+virtual size: 10 GiB (10737418240 bytes)
+disk size: 10 GiB
+Child node '/file':
+    filename: /mnt/pve/NFS/images/101/vm-101-disk-0.raw
+    protocol type: file
+    file length: 10 GiB (10737418240 bytes)
+    disk size: 10 GiB
+
+# Storage 格式轉換
+qemu-img convert -p -t none -T none -f raw -O qcow2 /mnt/pve/NFS/images/101/vm-101-disk-0.raw /mnt/pve/NFS/images/101/vm-101-disk-0.qcow2
+
+```
 ### Multipath安裝
 ```
 # 方式一：線上安裝(所有Node皆需安裝)
