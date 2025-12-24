@@ -99,8 +99,8 @@ lsblk
 ![PVE 架構](./image/001.png)
 
 ## Directory
-Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。
-1.為File-based類型Storage。
+Directory 是以PVE本身空間建立目錄或使用整顆空磁碟，當成Storage使用。<br>
+1.為File-based類型Storage。<br>
 2.只要 Linux 核心能掛載的檔案系統（ext4, xfs, nfs, btrfs, smb/cifs），都可以定義為 Directory。
 
 ### Directory over iSCSI
