@@ -262,7 +262,7 @@ umount /mnt/data-btrfs
 
 rmdir /mnt/data-btrfs
 ```
-## 離線安裝Ceph
+## Ceph
 ```
 #上傳ceph至PVE上
 cd ceph
