@@ -69,3 +69,74 @@ systemctl enable docker.service
 root@ubuntu:~# docker -v
 Docker version 29.1.3, build f52814d
 ```
+
+## Image 管理
+### 下載Image
+```
+root@ubuntu:~# docker pull mysql
+Using default tag: latest
+latest: Pulling from library/mysql
+3cd9dbd900b6: Pull complete
+4739ccce10fe: Pull complete
+94829adeb7d5: Pull complete
+32ade1562315: Pull complete
+fe33d02f9e9d: Pull complete
+5b7494a5617c: Pull complete
+518fdee9efbe: Pull complete
+bc357b5ee6d2: Pull complete
+c977bb812578: Pull complete
+26040ca4b0ff: Pull complete
+4fdb57154777: Download complete
+64911a6c79e2: Download complete
+Digest: sha256:5ca0a273ed28c73acaef91da8bf1eca3711bee94bce4c378d42846375e645a72
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+
+# 檢查Image
+root@ubuntu:~# docker image ls
+IMAGE          ID             DISK USAGE   CONTENT SIZE   EXTRA
+mysql:latest   5ca0a273ed28       1.29GB          293MB
+
+# 若有無法下載，代表無官方Image，使用search尋找
+root@ubuntu:~# docker pull centos
+Using default tag: latest
+Error response from daemon: failed to resolve reference "docker.io/library/centos:latest": docker.io/library/centos:latest: not found
+
+root@ubuntu:~# docker search centos
+NAME                           DESCRIPTION                                     STARS     OFFICIAL
+centos                         DEPRECATED; The official build of CentOS.       7781      [OK]
+corpusops/centos               centos corpusops baseimage                      0
+dockette/centos                My Custom CentOS Dockerfiles                    1
+eclipse/centos                 CentOS based minimal stack with only git and…   1
+centos/postgresql-10-centos7   PostgreSQL is an advanced Object-Relational …   21
+centos/redis-5-centos8                                                         0
+centos/httpd-24-centos8                                                        3
+centos/mysql-80-centos8                                                        0
+centos/nginx-112-centos7       Platform for running nginx 1.12 or building …   16
+centos/mongodb-36-centos7      MongoDB NoSQL database server                   12
+centos/postgresql-10-centos8                                                   0
+centos/postgresql-12-centos8                                                   0
+centos/mysql-57-centos7        MySQL 5.7 SQL database server                   94
+centos/mariadb-103-centos8                                                     2
+centos/httpd-24-centos7        Platform for running Apache httpd 2.4 or bui…   46
+centos/systemd                 systemd enabled base container.                 114
+centos/mariadb-101-centos7     MariaDB 10.1 SQL database server                13
+centos/postgresql-96-centos7   PostgreSQL is an advanced Object-Relational …   45
+centos/nginx-18-centos7        Platform for running nginx 1.8 or building n…   14
+centos/redis-32-centos7        Redis in-memory data structure store, used a…   6
+centos/python-35-centos7       Platform for building and running Python 3.5…   39
+centos/mysql-56-centos7        MySQL 5.6 SQL database server                   23
+centos/ruby-22-centos7         Platform for building and running Ruby 2.2 a…   3
+centos/php-56-centos7          Platform for building and running PHP 5.6 ap…   34
+centos/nginx-114-centos8                                                       0
+```
+
+### 刪除Image
+```
+root@ubuntu:~# docker rmi mysql
+Untagged: mysql:latest
+Deleted: sha256:5ca0a273ed28c73acaef91da8bf1eca3711bee94bce4c378d42846375e645a72
+```
+
+
+
