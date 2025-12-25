@@ -235,17 +235,21 @@ template_web:latest                 47316662ecdb        225MB         59.8MB
 ```
 
 ## Container 管理
-### 建立Container：run
+### 建立及啟動Container：run / start
 * 若本地無Image可用，Docker會自動下載，若本地有則優先使用本地。
 * "-d"為背景執行；"-p"為Container Port。
+* 建立Container後會自動啟動，"start"主要針對手動停止的Container。
 ```
-root@ubuntu:~# docker run -d --name web -p 9090:80 nginx
+root@ubuntu:~# docker run -d --name andy_web -p 9090:80 nginx
 de3958da706d0f2451aff835ae1f4042243fcc797d9ea2f945d7efd6c0622981
 
 root@ubuntu:~# docker container ls
 CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS          PORTS                                         NAMES
-de3958da706d   nginx        "/docker-entrypoint.…"   34 seconds ago   Up 33 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp       web
+de3958da706d   nginx        "/docker-entrypoint.…"   34 seconds ago   Up 33 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp       abdy_web
 47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago      Up 2 hours      0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
+
+root@ubuntu:~# docker start andy_web
+andy_web
 ```
 * "-p 9090:80"代表將Container 80Port映射到Docker Host 9090Port上，當有兩台Container使用80Port，可映射9091Port。
 ![](./image/002.png)
@@ -265,6 +269,26 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED       STATUS       
 47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago   Up 2 hours               0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
 00daa1ec8e39   nginx        "/docker-entrypoint.…"   2 hours ago   Exited (0) 2 hours ago                                                 andyweb
 ```
+
+### 操作Container OS：exec
+* 連入Container OS進行操作。
+```
+root@ubuntu:~# docker exec -it andy_web bash
+
+root@c93429160f43:/# ls -a
+.   .dockerenv  boot  docker-entrypoint.d   etc   lib    media  opt   root  sbin  sys  usr
+..  bin         dev   docker-entrypoint.sh  home  lib64  mnt    proc  run   srv   tmp  var
+
+root@c93429160f43:/# touch andy_file
+
+root@c93429160f43:/# ls -a
+.   .dockerenv  bin   dev                  docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+..  andy_file   boot  docker-entrypoint.d  etc                   lib   media  opt  root  sbin  sys  usr
+
+root@c93429160f43:/# exit
+exit
+```
+
 ### 封裝Container：commit
 * 將Container封裝成Image，類似VM將虛擬機轉成Template。
 ```
@@ -279,4 +303,14 @@ root@ubuntu:~# docker image ls
 IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
 nginx:latest          fb01117203ff        228MB         62.6MB    
 template_web:latest   47316662ecdb        225MB         59.8MB
+```
+### 停止及移除Container：stop / rm
+* 移除Container前需先Stop Container。
+```
+root@ubuntu:~# docker stop andyweb
+andyweb
+
+root@ubuntu:~# docker rm andyweb
+andyweb
+
 ```
