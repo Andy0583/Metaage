@@ -152,12 +152,30 @@ root@ubuntu:~# docker image ls
 IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
 nginx:latest          fb01117203ff        228MB         62.6MB    
 template_web:latest   47316662ecdb        225MB         59.8MB
+```
+
 ### 架設Image Registry
 ```
-vi /etc/docker/daemon.json
+root@ubuntu:~# vi /etc/docker/daemon.json
+============================
+{
+  "insecure-registries": ["172.12.25.50:5000"]
+}
 ============================
 
+root@ubuntu:~# systemctl restart docker
 
-============================
+root@ubuntu:~# docker run -d -p 5000:5000 --name myhub registry:2
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+6d464ea18732: Pull complete
+44cf07d57ee4: Pull complete
+8e82f80af0de: Pull complete
+3493bf46cdec: Pull complete
+bbbdd6c6894b: Pull complete
+32a76c78501f: Download complete
+b537bf6d1146: Download complete
+Digest: sha256:a3d8aaa63ed8681a604f1dea0aa03f100d5895b6a58ace528858a7b332415373
+Status: Downloaded newer image for registry:2
+47121b79bbcc860d94bb70cef8b34c23ebb41a6e152eed816c24e834a071a91f
 ```
-
