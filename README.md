@@ -9,6 +9,5 @@
 * [PowerStore Release Notes](<https://github.com/Andy0583/Metaage/blob/main/Dell/PST_Release_Notes.md>)
 ---
 ![](https://github.com/Andy0583/share/blob/main/Image/2.png)</p>
-* 純興趣分享，不保證作法絕對正確，請大家斟酌參考。
-* 感謝在IT這條路上，給予我幫助及指導的每一個人。</p>
+* 最有效率的學習是「不斷的輸出」，也希望在IT這條路上，能給予你一點幫助。</p>
 **Andy Hsu**
