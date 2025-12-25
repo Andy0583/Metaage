@@ -11,7 +11,7 @@
 ### Container架構示意圖
 ![](./image/001.png)
 
-### Docker的前世今生
+### Docker前世今生
 * Docker 是一種輕量級虛擬化技術，可建立獨立的容器 (Container)，能夠快速地進行開發、交付、部署、測試應用程式。
 * 因Docker與K8S介接，需使用到Dockershim，維護成本過高，2022年5月K8Sv1.24宣布移除 Dockershim，使得Docker無法使用於K8S上。
 * 之後Mirantis公司接手維護Dockershim，將之前Docker Enterprise Edition改名Mirantis Kubernetes Engine (MKE)。
