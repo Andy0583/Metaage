@@ -20,5 +20,5 @@
 * 映像檔 (Image)：用來建立 Container 的應用程式環境，是一個類似 VM 的 ISO 檔。
 * 容器 (Container)：Container 是由 Image 所建立，運行於Runtime上。
 * 倉庫 (Registry)：用來管理 Image的空間，包含版本及標籤的 Images 集合。
-![](./image/002.png)
+![](./image/004.png)
 
