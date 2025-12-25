@@ -156,6 +156,14 @@ centos/mysql-56-centos7        MySQL 5.6 SQL database server                   2
 centos/ruby-22-centos7         Platform for building and running Ruby 2.2 a…   3
 centos/php-56-centos7          Platform for building and running PHP 5.6 ap…   34
 centos/nginx-114-centos8                                                       0
+
+# 指定下載位置
+root@ubuntu:~# docker pull 172.12.25.50:5000/andy_web
+Using default tag: latest
+latest: Pulling from andy_web
+Digest: sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005
+Status: Downloaded newer image for 172.12.25.50:5000/andy_web:latest
+172.12.25.50:5000/andy_web:latest
 ```
 
 ### 刪除Image：rmi
