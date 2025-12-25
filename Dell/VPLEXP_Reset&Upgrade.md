@@ -35,7 +35,6 @@ Are you sure you want to continue and delete the active meta-volume on this clus
 
 To show that you understand the risks involved and still desire to remove the active meta-volume
 enter REMOVE (case sensitive):REMOVE
-
 ```
 
 ### 開始Reset
@@ -44,4 +43,24 @@ enter REMOVE (case sensitive):REMOVE
 VPlexcli:/> configuration system-reset
 
 Do you want to continue? (Y/N): Y
+```
+
+## VPLEX Upgrade
+### 下載檔案
+* VPlex-version-management-server-package.tar
+* VPlex-version-director-firmware-package.tar
+* 上傳至MGMT Server /tmp
+### 升級作業
+```
+VPlexcli:/> version -a
+
+service@mgmt-1:~> cd /tmp
+
+service@mgmt-1:/tmp> ll VPlex-6.2.0.07*.*
+
+service@ManagementServer:~> VPlex-MS-installer --skip-package-verification /tmp/VPlex-6.2.0.07.00.02-management-server-package.tar
+
+VPlexcli:/> ndu pre-config-upgrade -u /tmp/VPlex-6.2.0.07.00.02-director-firmware-package.tar
+
+VPlexcli:/> version -a
 ```
