@@ -183,8 +183,35 @@ template_web:latest   47316662ecdb        225MB         59.8MB
 
 ### 標籤及上傳Image：tag / push
 * Image上傳位置，依據tag而定。
+* 使用tag image，Image ID會相同，只佔一份空間。
+* 可移除原本image，不會影響tag出來的image。
+* 刪除第一份image只會untag，並不會直接刪除，直到最後一份才會真的刪除。
 ```
-root@ubuntu:~# docker rmi mysql
+# Tag Image
+root@ubuntu:~# docker tag template_web:latest 172.12.25.50:5000/andy_web
 
+root@ubuntu:~# docker image ls
+IMAGE                               ID             DISK USAGE   CONTENT SIZE   EXTRA
+172.12.25.50:5000/andy_web:latest   47316662ecdb        225MB         59.8MB
+nginx:latest                        fb01117203ff        228MB         62.6MB    
+registry:2                          a3d8aaa63ed8       37.4MB         10.3MB    
+template_web:latest                 47316662ecdb        225MB         59.8MB
 
+# 上傳Image至Image Registry
+root@ubuntu:~# docker push 172.12.25.50:5000/andy_web:latest
+The push refers to repository [172.12.25.50:5000/andy_web]
+114e699da838: Pushed
+5b5fa0b64d74: Pushed
+1733a4cd5954: Pushed
+40c4027d0792: Pushed
+7382b41547b8: Pushed
+5b219a92f92a: Pushed
+ee3a09d2248a: Pushed
+9ee60c6c0558: Pushed
+latest: digest: sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005 size: 2037
+
+# 查看Image Registry是否有上傳Image
+root@ubuntu:~# curl http://172.12.25.50:5000/v2/_catalog
+{"repositories":["andy_web"]}
+```
 
