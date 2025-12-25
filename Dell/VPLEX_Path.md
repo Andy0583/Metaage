@@ -1,8 +1,91 @@
-## VPLEX Reset
-### 斷開Cluster
-* Storage View要砍掉
-* 若為Metro架構，需於Cluster 2先斷開Cluster 1 director
+## VPLEX Metro狀態
+### 原始狀態
+* 主機在C1，觀察Path狀態
 ```
-VPlexcli:/> disconnect -n director-1-1-A
-VPlexcli:/> disconnect -n director-1-1-B
+PS C:\Users\Administrator> mpclaim -s -d 2
+
+MPIO Disk2: 08 Paths, Round Robin with Subset, ALUA Not Supported
+    Controlling DSM: Microsoft DSM
+    SN: 6000144000000010301F14F9976C13A6
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    ---------------------------------------------------------------------------
+    0000000077040009 Active/Optimized   004|000|009|001   0
+    0000000077040008 Active/Optimized   004|000|008|001   0
+    000000007704000a Active/Optimized   004|000|010|001   0
+    000000007704000b Active/Optimized   004|000|011|001   0
+    0000000077040007 Standby            004|000|007|001   0
+    0000000077040006 Standby            004|000|006|001   0
+    0000000077040005 Standby            004|000|005|001   0
+    0000000077040004 Standby            004|000|004|001   0
 ```
+### 移除C1 VPLEX FE
+```
+PS C:\Users\Administrator> mpclaim -s -d 2
+
+MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
+    Controlling DSM: Microsoft DSM
+    SN: 6000144000000010301F14F9976C13A6
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    ---------------------------------------------------------------------------
+    0000000077040007 Standby            004|000|007|001   0
+    0000000077040006 Standby            004|000|006|001   0
+    0000000077040005 Active/Optimized   004|000|005|001   0
+    0000000077040004 Standby            004|000|004|001   0
+```
+### 移除40005 path
+```
+PS C:\Users\Administrator> mpclaim -s -d 2
+
+MPIO Disk2: 03 Paths, Round Robin with Subset, ALUA Not Supported
+    Controlling DSM: Microsoft DSM
+    SN: 6000144000000010301F14F9976C13A6
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    ---------------------------------------------------------------------------
+    0000000077040007 Standby            004|000|007|001   0
+    0000000077040006 Active/Optimized   004|000|006|001   0
+    0000000077040004 Standby            004|000|004|001   0
+```
+### 加回40005 path
+```
+PS C:\Users\Administrator> mpclaim -s -d 2
+
+MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
+    Controlling DSM: Microsoft DSM
+    SN: 6000144000000010301F14F9976C13A6
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    ---------------------------------------------------------------------------
+    0000000077040007 Standby            004|000|007|001   0
+    0000000077040006 Active/Optimized   004|000|006|001   0
+    0000000077040005 Standby            004|000|005|001   0
+    0000000077040004 Standby            004|000|004|001   0
+```
+### 加回C1 VPLEX FE
+```
+PS C:\Users\Administrator> mpclaim -s -d 2
+
+MPIO Disk2: 08 Paths, Round Robin with Subset, ALUA Not Supported
+    Controlling DSM: Microsoft DSM
+    SN: 6000144000000010301F14F9976C13A6
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    ---------------------------------------------------------------------------
+    0000000077040009 Active/Optimized   004|000|009|001   0
+    0000000077040008 Active/Optimized   004|000|008|001   0
+    000000007704000b Active/Optimized   004|000|011|001   0
+    000000007704000a Active/Optimized   004|000|010|001   0
+    0000000077040007 Standby            004|000|007|001   0
+    0000000077040006 Standby            004|000|006|001   0
+    0000000077040005 Standby            004|000|005|001   0
+    0000000077040004 Standby            004|000|004|001   0
+```
+
+
