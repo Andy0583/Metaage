@@ -36,7 +36,7 @@ MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
     0000000077040007 Standby            004|000|007|001   0
     0000000077040006 Active/Optimized   004|000|006|001   0
 ```
-### 移除40006 path
+### 移除C2 40006 path
 ```
 PS C:\Users\Administrator> mpclaim -s -d 2
 
@@ -51,7 +51,7 @@ MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
     0000000077040004 Standby            004|000|004|001   0
     0000000077040007 Active/Optimized   004|000|007|001   0
 ```
-### 加回40006 path
+### 加回C2 40006 path
 ```
 PS C:\Users\Administrator> mpclaim -s -d 2
 
@@ -67,7 +67,7 @@ MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
     0000000077040007 Active/Optimized   004|000|007|001   0
     0000000077040006 Standby            004|000|006|001   0
 ```
-### 移除40007 path
+### 移除C2 40007 path
 ```
 PS C:\Users\Administrator> mpclaim -s -d 2
 
@@ -82,7 +82,7 @@ MPIO Disk2: 04 Paths, Round Robin with Subset, ALUA Not Supported
     0000000077040004 Active/Optimized   004|000|004|001   0
     0000000077040006 Standby            004|000|006|001   0
 ```
-### 加回40007 path
+### 加回C2 40007 path
 ```
 PS C:\Users\Administrator> mpclaim -s -d 2
 
