@@ -223,3 +223,5 @@ root@ubuntu:~# curl http://172.12.25.50:5000/v2/_catalog
 {"repositories":["andy_web"]}
 ```
 
+### 匯出及匯入Image：save / load
+
