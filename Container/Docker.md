@@ -253,8 +253,20 @@ de3958da706d   nginx        "/docker-entrypoint.…"   34 seconds ago   Up 33 se
 * 使用瀏覽器連至Docker IP，並加上Port，即可查看nginx container。
 ![](./image/003.png)
 
+### 查看Container：ps -a
+* 與"container ls"不同之處，為可查看到已停止的Container。
+```
+root@ubuntu:~# docker container ls
+CONTAINER ID   IMAGE        COMMAND                  CREATED       STATUS       PORTS                                         NAMES
+47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago   Up 2 hours   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
+
+root@ubuntu:~# docker ps -a
+CONTAINER ID   IMAGE        COMMAND                  CREATED       STATUS                   PORTS                                         NAMES
+47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago   Up 2 hours               0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
+00daa1ec8e39   nginx        "/docker-entrypoint.…"   2 hours ago   Exited (0) 2 hours ago                                                 andyweb
+```
 ### 封裝Container：commit
-* 將Container封裝成Image，類似VM將虛擬機轉成Template
+* 將Container封裝成Image，類似VM將虛擬機轉成Template。
 ```
 root@ubuntu:~# docker container ls
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
