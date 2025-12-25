@@ -174,22 +174,6 @@ Untagged: mysql:latest
 Deleted: sha256:5ca0a273ed28c73acaef91da8bf1eca3711bee94bce4c378d42846375e645a72
 ```
 
-### 封裝Image：commit
-* 將Container封裝成Image，類似VM將虛擬機轉成Template
-```
-root@ubuntu:~# docker container ls
-CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
-00daa1ec8e39   nginx     "/docker-entrypoint.…"   14 seconds ago   Up 14 seconds   80/tcp    andyweb
-
-root@ubuntu:~# docker commit andyweb template_web
-sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005
-
-root@ubuntu:~# docker image ls
-IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
-nginx:latest          fb01117203ff        228MB         62.6MB    
-template_web:latest   47316662ecdb        225MB         59.8MB
-```
-
 ### 標籤及上傳Image：tag / push
 * Image上傳位置，依據tag而定。
 * 使用tag image，Image ID會相同，只佔一份空間。
@@ -225,4 +209,63 @@ root@ubuntu:~# curl http://172.12.25.50:5000/v2/_catalog
 ```
 
 ### 匯出及匯入Image：save / load
+```
+# 匯出Image
+root@ubuntu:~# docker save -o andy.tar template_web:latest
 
+root@ubuntu:~# ls
+andy.tar
+
+# 匯入Image
+root@ubuntu:~# docker image ls
+IMAGE                               ID             DISK USAGE   CONTENT SIZE   EXTRA
+172.12.25.50:5000/andy_web:latest   47316662ecdb        225MB         59.8MB
+nginx:latest                        fb01117203ff        228MB         62.6MB    U
+registry:2                          a3d8aaa63ed8       37.4MB         10.3MB    U
+
+root@ubuntu:~# docker image load -i andy.tar
+Loaded image: template_web:latest
+
+root@ubuntu:~# docker image ls
+IMAGE                               ID             DISK USAGE   CONTENT SIZE   EXTRA
+172.12.25.50:5000/andy_web:latest   47316662ecdb        225MB         59.8MB
+nginx:latest                        fb01117203ff        228MB         62.6MB    U
+registry:2                          a3d8aaa63ed8       37.4MB         10.3MB    U
+template_web:latest                 47316662ecdb        225MB         59.8MB
+```
+
+## Container 管理
+### 建立Container：run
+* 若本地無Image可用，Docker會自動下載，若本地有則優先使用本地。
+* "-d"為背景執行；"-p"為Container Port。
+```
+root@ubuntu:~# docker run -d --name web -p 9090:80 nginx
+de3958da706d0f2451aff835ae1f4042243fcc797d9ea2f945d7efd6c0622981
+
+root@ubuntu:~# docker container ls
+CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+de3958da706d   nginx        "/docker-entrypoint.…"   34 seconds ago   Up 33 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp       web
+47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago      Up 2 hours      0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
+```
+* "-p 9090:80"代表將Container 80Port映射到Docker Host 9090Port上。
+* 當有兩台Container使用80Port，可映射9091Port。
+![](./image/002.png)
+
+* 使用瀏覽器連至Docker IP，並加上Port，即可查看nginx container。
+![](./image/003.png)
+
+### 封裝Container：commit
+* 將Container封裝成Image，類似VM將虛擬機轉成Template
+```
+root@ubuntu:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+00daa1ec8e39   nginx     "/docker-entrypoint.…"   14 seconds ago   Up 14 seconds   80/tcp    andyweb
+
+root@ubuntu:~# docker commit andyweb template_web
+sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005
+
+root@ubuntu:~# docker image ls
+IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:latest          fb01117203ff        228MB         62.6MB    
+template_web:latest   47316662ecdb        225MB         59.8MB
+```
