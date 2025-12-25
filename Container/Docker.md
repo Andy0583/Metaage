@@ -22,3 +22,7 @@
 * 倉庫 (Registry)：用來管理 Image的空間，包含版本及標籤的 Images 集合。
 ![](./image/004.png)
 
+## Docker 安裝
+* 至『https://download.docker.com/linux/static/stable/x86_64/』下載最新Docker。
+
+### 安裝程序
