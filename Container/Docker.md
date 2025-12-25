@@ -71,7 +71,7 @@ Docker version 29.1.3, build f52814d
 ```
 
 ## Image 管理
-### 下載Image
+### 下載Image：pull
 ```
 root@ubuntu:~# docker pull mysql
 Using default tag: latest
@@ -131,12 +131,33 @@ centos/php-56-centos7          Platform for building and running PHP 5.6 ap…  
 centos/nginx-114-centos8                                                       0
 ```
 
-### 刪除Image
+### 刪除Image：rmi
 ```
 root@ubuntu:~# docker rmi mysql
 Untagged: mysql:latest
 Deleted: sha256:5ca0a273ed28c73acaef91da8bf1eca3711bee94bce4c378d42846375e645a72
 ```
 
+### 封裝Image：commit
+* 將Container封裝成Image，類似VM將虛擬機轉成Template
+```
+root@ubuntu:~# docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+00daa1ec8e39   nginx     "/docker-entrypoint.…"   14 seconds ago   Up 14 seconds   80/tcp    andyweb
 
+root@ubuntu:~# docker commit andyweb template_web
+sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005
+
+root@ubuntu:~# docker image ls
+IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:latest          fb01117203ff        228MB         62.6MB    
+template_web:latest   47316662ecdb        225MB         59.8MB
+### 架設Image Registry
+```
+vi /etc/docker/daemon.json
+============================
+
+
+============================
+```
 
