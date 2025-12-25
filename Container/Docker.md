@@ -127,7 +127,8 @@ mysql:latest   5ca0a273ed28       1.29GB          293MB
 # 若有無法下載，代表無官方Image，使用search尋找
 root@ubuntu:~# docker pull centos
 Using default tag: latest
-Error response from daemon: failed to resolve reference "docker.io/library/centos:latest": docker.io/library/centos:latest: not found
+Error response from daemon: failed to resolve reference "docker.io/library/centos:latest":
+docker.io/library/centos:latest: not found
 
 root@ubuntu:~# docker search centos
 NAME                           DESCRIPTION                                     STARS     OFFICIAL
