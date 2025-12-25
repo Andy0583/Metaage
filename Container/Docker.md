@@ -247,8 +247,7 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS    
 de3958da706d   nginx        "/docker-entrypoint.…"   34 seconds ago   Up 33 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp       web
 47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago      Up 2 hours      0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
 ```
-* "-p 9090:80"代表將Container 80Port映射到Docker Host 9090Port上。
-* 當有兩台Container使用80Port，可映射9091Port。
+* "-p 9090:80"代表將Container 80Port映射到Docker Host 9090Port上，當有兩台Container使用80Port，可映射9091Port。
 ![](./image/002.png)
 
 * 使用瀏覽器連至Docker IP，並加上Port，即可查看nginx container。
