@@ -314,6 +314,7 @@ andyweb
 ## Docker Volume
 ### Docker Volume介紹
 * 掛載Volume給予Container使用，有兩種主要方式：Bind Mount、Docker Volume
+* 建議不要將相同Volume，同時掛載給多個 Container，Docker不會幫你做任何協調或保護。
 * 主要差異如下表：<br>
 
 |比較項目|優點|缺點|
