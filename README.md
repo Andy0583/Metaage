@@ -11,7 +11,7 @@
 * [VPLEXP Reset&Upgrade](<https://github.com/Andy0583/Metaage/blob/main/Dell/VPLEXP_Reset%26Upgrade.md>)
 * [VPLEXP Path POC](<https://github.com/Andy0583/Metaage/blob/main/Dell/VPLEX_Path_POC.md>)
 ### 🔹OS
-* [SAN Switch](<https://github.com/Andy0583/Metaage/blob/main/Dell/SAN_Switch.md>)
+* [IBM AIX](<https://github.com/Andy0583/Metaage/blob/main/OS/AIX.md>)
 
 ---
 ![](https://github.com/Andy0583/share/blob/main/Image/2.png)</p>
