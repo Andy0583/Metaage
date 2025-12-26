@@ -83,7 +83,8 @@ EMC.PowerStore.aix.rte     6.3.0.2  COMMITTED  DellEMC PowerStore AIX Support
 lsdev -Cc disk 
 hdisk0 Available C2-T1-01 EMC INVISTA FCP MPIO Disk
 ```
-## Path查詢設定
+## Path設定
+### Path掃描、查詢
 ```
 # 重新掃描，查看Path數量
 cfgmgr
@@ -111,3 +112,72 @@ hdisk2  6        Enabled  Sel          fscsi1  50001442901f1400,2000000000000
 hdisk2  7        Enabled  Sel          fscsi1  50001442801f1400,2000000000000
 ```
 
+### 設定Path Priority
+```
+# 優先權最高為255，1為最低
+chpath -l hdisk2 -p fscsi1 -w 50001442901f1400,2000000000000 -a priority=255
+chpath -l hdisk2 -p fscsi0 -w 50001442807b6500,2000000000000 -a priority=1
+
+# 查看Path Priority
+lspath -l hdisk2 -a priority -F value -p fscsi0 -w 50001442801f1400,2000000000000
+255
+
+lspath -l hdisk2 -a priority -F value -p fscsi0 -w 50001442901f1400,2000000000000
+1
+```
+
+### 移除Path
+```
+rmdev -dl fcs0 -R
+
+cfgmger
+```
+
+### AIX algorithm（Path Policy）
+* 安裝完Dell ODM後，一律自動改為RR，且無法變更。
+* 設定為shortest_queue時，Path Priority無作用。
+* “Sel”為可選擇Path。
+* 變更algorithm不需重開。
+```
+# 設定為Fail_Over：只有一條在送流量
+chdev -l hdisk0 -a algorithm=fail_over -P
+
+lsmpio -l hdisk1
+name    path_id  status   path_status  parent  connection
+hdisk1  0        Enabled  Sel          fscsi0  50001442901f1400,1000000000000
+hdisk1  1        Enabled               fscsi0  50001442801f1400,1000000000000
+hdisk1  2        Enabled               fscsi0  50001442807b6500,1000000000000
+hdisk1  3        Enabled               fscsi0  50001442907b6500,1000000000000
+hdisk1  4        Enabled               fscsi1  50001442901f1400,1000000000000
+hdisk1  5        Enabled               fscsi1  50001442801f1400,1000000000000
+hdisk1  6        Enabled               fscsi1  50001442807b6500,1000000000000
+hdisk1  7        Enabled               fscsi1  50001442907b6500,1000000000000
+
+# 設定為RR：負載平衡，但若有條高延遲Path依舊會使用
+chdev -l hdisk2 -a algorithm=round_robin -P
+
+lsmpio -l hdisk2
+name    path_id  status   path_status  parent  connection
+hdisk2  0        Enabled  Sel          fscsi0  50001442807b6500,2000000000000
+hdisk2  1        Enabled  Sel          fscsi0  50001442907b6500,2000000000000
+hdisk2  2        Enabled  Sel          fscsi1  50001442807b6500,2000000000000
+hdisk2  3        Enabled  Sel          fscsi1  50001442907b6500,2000000000000
+hdisk2  4        Enabled  Sel          fscsi0  50001442901f1400,2000000000000
+hdisk2  5        Enabled  Sel          fscsi0  50001442801f1400,2000000000000
+hdisk2  6        Enabled  Sel          fscsi1  50001442901f1400,2000000000000
+hdisk2  7        Enabled  Sel          fscsi1  50001442801f1400,2000000000000
+
+# 設定為shortest_queue：動態智慧型負載平衡，觀察每條Path佇列，最少的優先傳送
+chdev -l hdisk2 -a algorithm=shortest_queue -P
+
+lsmpio -l hdisk3
+name    path_id  status   path_status  parent  connection
+hdisk3  0        Enabled  Sel          fscsi0  50001442807b6500,3000000000000
+hdisk3  1        Enabled  Sel          fscsi0  50001442907b6500,3000000000000
+hdisk3  2        Enabled  Sel          fscsi1  50001442807b6500,3000000000000
+hdisk3  3        Enabled  Sel          fscsi1  50001442907b6500,3000000000000
+hdisk3  4        Enabled  Sel          fscsi0  50001442901f1400,3000000000000
+hdisk3  5        Enabled  Sel          fscsi0  50001442801f1400,3000000000000
+hdisk3  6        Enabled  Sel          fscsi1  50001442901f1400,3000000000000
+hdisk3  7        Enabled  Sel          fscsi1  50001442801f1400,3000000000000
+```
