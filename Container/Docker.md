@@ -8,18 +8,17 @@
 |無須擔心系統故障，只需在相同Image上，重啟另一個容器即可|共用宿主主機及Image，若有漏洞則容易造成安全上隱憂|
 |搭配K8S或OCP等管理工具，極易擴展、縮減、HA|網路與傳統網路不同，如Service、Ingress..等，學習曲線較高|
 
-#### Container架構示意圖
+### Container架構
 ![](./image/001.png)
 
-#### Docker前世今生
+### Docker介紹
 * Docker 是一種輕量級虛擬化技術，可建立獨立的容器 (Container)，能夠快速地進行開發、交付、部署、測試應用程式。
-* 因Docker與K8S介接，需使用到Dockershim，維護成本過高，2022年5月K8Sv1.24宣布移除 Dockershim，使得Docker無法使用於K8S上。
-* 之後Mirantis公司接手維護Dockershim，將之前Docker Enterprise Edition改名Mirantis Kubernetes Engine (MKE)。
-
-### Docker三大組成元件
-* 映像檔 (Image)：用來建立 Container 的應用程式環境，是一個類似 VM 的 ISO 檔。
-* 容器 (Container)：Container 是由 Image 所建立，運行於Runtime上。
-* 倉庫 (Registry)：用來管理 Image的空間，包含版本及標籤的 Images 集合。
+* Docker與K8S界接，需額外多道Dockershim轉接曾，K8S認為維護成本過高，於v1.24停維Dockershim，使得Docker無法使用於K8S上。
+* 之後Mirantis公司接手維護Dockershim，並將之前Docker Enterprise Edition改名Mirantis Kubernetes Engine (MKE)販售。
+* Docker三大組成元件
+  * 映像檔 (Image)：用來建立 Container 的應用程式環境，是一個類似 VM 的 ISO 檔。
+  * 容器 (Container)：Container 是由 Image 所建立，運行於Runtime上。
+  * 倉庫 (Registry)：用來管理 Image的空間，包含版本及標籤的 Images 集合。
 ![](./image/004.png)
 
 ## Docker 安裝
@@ -98,7 +97,7 @@ Status: Downloaded newer image for registry:2
 47121b79bbcc860d94bb70cef8b34c23ebb41a6e152eed816c24e834a071a91f
 ```
 
-### 下載Image：pull
+### 下載及刪除Image：pull / rmi
 ```
 root@ubuntu:~# docker pull mysql
 Using default tag: latest
@@ -138,25 +137,6 @@ dockette/centos                My Custom CentOS Dockerfiles                    1
 eclipse/centos                 CentOS based minimal stack with only git and…   1
 centos/postgresql-10-centos7   PostgreSQL is an advanced Object-Relational …   21
 centos/redis-5-centos8                                                         0
-centos/httpd-24-centos8                                                        3
-centos/mysql-80-centos8                                                        0
-centos/nginx-112-centos7       Platform for running nginx 1.12 or building …   16
-centos/mongodb-36-centos7      MongoDB NoSQL database server                   12
-centos/postgresql-10-centos8                                                   0
-centos/postgresql-12-centos8                                                   0
-centos/mysql-57-centos7        MySQL 5.7 SQL database server                   94
-centos/mariadb-103-centos8                                                     2
-centos/httpd-24-centos7        Platform for running Apache httpd 2.4 or bui…   46
-centos/systemd                 systemd enabled base container.                 114
-centos/mariadb-101-centos7     MariaDB 10.1 SQL database server                13
-centos/postgresql-96-centos7   PostgreSQL is an advanced Object-Relational …   45
-centos/nginx-18-centos7        Platform for running nginx 1.8 or building n…   14
-centos/redis-32-centos7        Redis in-memory data structure store, used a…   6
-centos/python-35-centos7       Platform for building and running Python 3.5…   39
-centos/mysql-56-centos7        MySQL 5.6 SQL database server                   23
-centos/ruby-22-centos7         Platform for building and running Ruby 2.2 a…   3
-centos/php-56-centos7          Platform for building and running PHP 5.6 ap…   34
-centos/nginx-114-centos8                                                       0
 
 # 指定下載位置
 root@ubuntu:~# docker pull 172.12.25.50:5000/andy_web
@@ -165,10 +145,8 @@ latest: Pulling from andy_web
 Digest: sha256:47316662ecdb6b789c8416279cb7efa6b44373a3e29bbaa115b6866514f36005
 Status: Downloaded newer image for 172.12.25.50:5000/andy_web:latest
 172.12.25.50:5000/andy_web:latest
-```
 
-### 刪除Image：rmi
-```
+# 刪除Image：rmi
 root@ubuntu:~# docker rmi mysql
 Untagged: mysql:latest
 Deleted: sha256:5ca0a273ed28c73acaef91da8bf1eca3711bee94bce4c378d42846375e645a72
