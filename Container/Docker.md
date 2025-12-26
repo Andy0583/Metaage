@@ -22,12 +22,12 @@
 ![](./image/004.png)
 
 ## Docker 安裝
-#### 線上安裝
+### 線上安裝
 ```
 curl -fsSL https://get.docker.com | sh
 start docker && systemctl enable docker
 ```
-#### 離線安裝
+### 離線安裝
 * 先至[Docker官網](https://download.docker.com/linux/static/stable/x86_64/)下載最新Docker。
 ```
 tar -xvf docker-29.1.3.tgz
