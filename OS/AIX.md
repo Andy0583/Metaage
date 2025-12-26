@@ -1,7 +1,7 @@
 ## FC adapter
 * 若為VIOS架構，實體HBA卡為10：XX，VIOS會出現虛擬HBA卡給內部LPAR C0:XX使用。
 * SAN SW Zoning若要給VIOS綁實體卡，若要給裡面的LPAR綁虛擬卡(無須綁實體卡)。
-* Zoning前AIX需先打光才認得到。
+* Zoning前AIX需先打光才認得到（cfgmgr）。
 
 ### 顯示可用FC adapter
 ```
@@ -82,3 +82,32 @@ EMC.PowerStore.aix.rte     6.3.0.2  COMMITTED  DellEMC PowerStore AIX Support
 # Disk顯示為EMC
 lsdev -Cc disk 
 hdisk0 Available C2-T1-01 EMC INVISTA FCP MPIO Disk
+```
+## Path查詢設定
+```
+# 重新掃描，查看Path數量
+cfgmgr
+
+lspath -l hdisk2
+Enabled hdisk2 fscsi1
+Enabled hdisk2 fscsi1
+Enabled hdisk2 fscsi0
+Enabled hdisk2 fscsi0
+Enabled hdisk2 fscsi0
+Enabled hdisk2 fscsi0
+Enabled hdisk2 fscsi1
+Enabled hdisk2 fscsi1
+
+# 查看MPIO storage devices(Target Port,LUN ID)
+lsmpio -l hdisk2
+name    path_id  status   path_status  parent  connection
+hdisk2  0        Enabled  Sel          fscsi0  50001442807b6500,2000000000000
+hdisk2  1        Enabled  Sel          fscsi0  50001442907b6500,2000000000000
+hdisk2  2        Enabled  Sel          fscsi1  50001442807b6500,2000000000000
+hdisk2  3        Enabled  Sel          fscsi1  50001442907b6500,2000000000000
+hdisk2  4        Enabled  Sel          fscsi0  50001442901f1400,2000000000000
+hdisk2  5        Enabled  Sel          fscsi0  50001442801f1400,2000000000000
+hdisk2  6        Enabled  Sel          fscsi1  50001442901f1400,2000000000000
+hdisk2  7        Enabled  Sel          fscsi1  50001442801f1400,2000000000000
+```
+
