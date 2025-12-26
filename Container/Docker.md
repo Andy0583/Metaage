@@ -187,6 +187,8 @@ root@ubuntu:~# curl http://172.12.25.50:5000/v2/_catalog
 ```
 
 ### 匯出及匯入Image：save / load
+* "save"將Image匯出成tar檔，便可移植至其他相容平台。
+* "load"將其他相容平台的tar檔，移植至Docker中。
 ```
 # 匯出Image
 root@ubuntu:~# docker save -o andy.tar template_web:latest
@@ -248,7 +250,7 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED       STATUS       
 00daa1ec8e39   nginx        "/docker-entrypoint.…"   2 hours ago   Exited (0) 2 hours ago                                                 andyweb
 ```
 
-### 操作Container OS：exec
+### 操作Container OS：exec / cp
 * 連入Container OS進行操作。
 ```
 root@ubuntu:~# docker exec -it andy_web bash
@@ -266,7 +268,16 @@ root@c93429160f43:/# ls -a
 root@c93429160f43:/# exit
 exit
 ```
+* Container檔案傳入與傳出。
+```
+# 傳入Container中
+root@ubuntu:~# docker cp andycp.txt andy_web:/andycp.txt
+Successfully copied 1.54kB to andy_web:/andycp.txt
 
+# 從Container傳出
+root@ubuntu:~# docker cp andy_web:/andy_file andy_file
+Successfully copied 1.54kB to /root/andy_file
+```
 ### 封裝Container：commit
 * 將Container封裝成Image，類似VM將虛擬機轉成Template。
 ```
