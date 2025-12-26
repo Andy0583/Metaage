@@ -8,10 +8,10 @@
 |無須擔心系統故障，只需在相同Image上，重啟另一個容器即可|共用宿主主機及Image，若有漏洞則容易造成安全上隱憂|
 |搭配K8S或OCP等管理工具，極易擴展、縮減、HA|網路與傳統網路不同，如Service、Ingress..等，學習曲線較高|
 
-### Container架構示意圖
+#### Container架構示意圖
 ![](./image/001.png)
 
-### Docker前世今生
+#### Docker前世今生
 * Docker 是一種輕量級虛擬化技術，可建立獨立的容器 (Container)，能夠快速地進行開發、交付、部署、測試應用程式。
 * 因Docker與K8S介接，需使用到Dockershim，維護成本過高，2022年5月K8Sv1.24宣布移除 Dockershim，使得Docker無法使用於K8S上。
 * 之後Mirantis公司接手維護Dockershim，將之前Docker Enterprise Edition改名Mirantis Kubernetes Engine (MKE)。
@@ -23,12 +23,12 @@
 ![](./image/004.png)
 
 ## Docker 安裝
-### 線上安裝
+#### 線上安裝
 ```
 curl -fsSL https://get.docker.com | sh
 start docker && systemctl enable docker
 ```
-### 離線安裝
+#### 離線安裝
 * 先至[Docker官網](https://download.docker.com/linux/static/stable/x86_64/)下載最新Docker。
 ```
 tar -xvf docker-29.1.3.tgz
