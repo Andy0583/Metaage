@@ -386,3 +386,19 @@ root@ubuntu:~# cd /var/lib/docker/volumes/app_data/_data/
 root@ubuntu:/var/lib/docker/volumes/app_data/_data# ls
 BBB
 ```
+
+## Container實作
+### 安裝Dell SCG
+* 下載Dell SCG for Docker，將檔案傳至Docker主機中。
+```
+root@ubuntu:~# ls
+SCG-PM-5.30.00.14-docker.bin
+
+root@ubuntu:~# chmod +x SCG-PM-5.30.00.14-docker.bin
+
+root@ubuntu:~# ./SCG-PM-5.30.00.14-docker.bin  --install
+Please inform your Fully Qualified Domain Name ([ENTER] to keep it blank):
+scg.andy.com
+SCG Policy Manager services started. Please provision SCG by going to URL https://172.12.25.50:8443
+```
+![](./image/005.png)
