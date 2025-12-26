@@ -319,3 +319,69 @@ andyweb
 |比較項目|優點|缺點|
 |:---:|:---:|:---:|
 |實際資料|Host路徑(mnt/data)|Docker管理(/var/lib/docker/volumes/)|
+|建立方式|-v /host:/container)|docker volume create|
+|檔案管理|Host OS|Docker|
+|可攜性|低|高|
+|安全性|風險較高|較安全|
+|效能|效能較高|效能較低|
+|適合環境|開發/除錯|正式環境|
+
+### Bind Mount
+* 直接將主機目錄(可來自於外部存儲)原封不動掛載進Container，只能用於新起Container上。
+```
+# 在Container根目錄中，將主機/mnt/data掛載成/test
+root@ubuntu:~# docker run -d --name ct1 -v /mnt/data:/test nginx
+deeeba7d98b0d97b4642516198a1ba53683beaf887218af3eef44b5d37443bfc
+
+root@ubuntu:~# docker exec -it ct1 bash
+
+root@deeeba7d98b0:/# ls -a
+.   .dockerenv  boot  docker-entrypoint.d   etc   lib    media  opt   root  sbin  sys   tmp  var
+..  bin         dev   docker-entrypoint.sh  home  lib64  mnt    proc  run   srv   test  usr
+
+# 在Container /test中寫入資料
+root@deeeba7d98b0:/# cd test
+
+root@deeeba7d98b0:/test# mkdir AAA
+
+root@deeeba7d98b0:/test# exit
+exit
+
+# 查看主機/mnt/data是否此筆資料
+root@ubuntu:~# cd /mnt/data
+
+root@ubuntu:/mnt/data# ls
+AAA  lost+found
+```
+
+### Docker Volume
+* 直接將主機目錄(可來自於外部存儲)用Docker抽象層Volume Driver管理資料磁區，只能用於新起Container上。
+```
+root@ubuntu:~# docker volume create app_data
+app_data
+
+root@ubuntu:~# docker run -d --name ct2 -v app_data:/app nginx
+12712204cbee5a6d59caba97c970907b5209668a7fb9bf9603f139d7e827304b
+
+root@ubuntu:~# docker exec -it ct2 bash
+
+root@12712204cbee:/# ls -a
+.   .dockerenv  bin   dev                  docker-entrypoint.sh  home  lib64  mnt  proc  run   srv  tmp  var
+..  app         boot  docker-entrypoint.d  etc                   lib   media  opt  root  sbin  sys  usr
+
+# 在Container /app中寫入資料
+root@12712204cbee:/# cd app
+
+root@12712204cbee:/app# ls
+
+root@12712204cbee:/app# mkdir BBB
+
+root@12712204cbee:/app# exit
+exit
+
+# 查看主機/mnt/data是否此筆資料
+root@ubuntu:~# cd /var/lib/docker/volumes/app_data/_data/
+
+root@ubuntu:/var/lib/docker/volumes/app_data/_data# ls
+BBB
+```
