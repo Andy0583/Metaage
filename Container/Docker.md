@@ -237,7 +237,7 @@ andy_web
 * 使用瀏覽器連至Docker IP，並加上Port，即可查看nginx container。
 ![](./image/003.png)
 
-### 查看Container：ps -a
+### 查看Container：ps -a / stats
 * 與"container ls"不同之處，為可查看到已停止的Container。
 ```
 root@ubuntu:~# docker container ls
@@ -248,6 +248,14 @@ root@ubuntu:~# docker ps -a
 CONTAINER ID   IMAGE        COMMAND                  CREATED       STATUS                   PORTS                                         NAMES
 47121b79bbcc   registry:2   "/entrypoint.sh /etc…"   2 hours ago   Up 2 hours               0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   myhub
 00daa1ec8e39   nginx        "/docker-entrypoint.…"   2 hours ago   Exited (0) 2 hours ago                                                 andyweb
+```
+
+* "stats"可檢查Container使用狀態，使用Ctrl+C跳出。
+```
+root@ubuntu:~# docker stats
+CONTAINER ID   NAME       CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O     PIDS
+c93429160f43   andy_web   0.00%     4.789MiB / 15.62GiB   0.03%     1.78kB / 126B     0B / 24.6kB   5
+47121b79bbcc   myhub      0.00%     8.453MiB / 15.62GiB   0.05%     59.9MB / 62.5kB   0B / 120MB    13
 ```
 
 ### 操作Container OS：exec / cp
