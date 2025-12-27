@@ -3,7 +3,6 @@
 - Replication 為 PVE 內建功能，以 VM 為單位需手動進行設定
 - Replication 需搭配 ZFS Storage 才能使用，且每台Node上ZFS Storage 命名皆需相同
 - 為增量同步進行抄寫，抄寫可自訂頻率，最低為一分鐘一次
-- 即時刪除Replication Job，Target資料也會一併刪除
 
 ### 切換方式
 - PVE 會自動將三台 Node 上的 /etc/pve/nodes 資料保持同步狀態
@@ -85,4 +84,7 @@ JobID      Enabled    Target                           LastSync             Next
 
 ```
 
+### 相關內容：
+- 即時刪除Replication Job，Target資料也會一併刪除
 - 二台Node有Replication關係下，可進行VM Migrate，完成後會反向抄寫
+- 在ZFS Storage下的VM，在無Replication關係的Node，是無法進行Migrate
