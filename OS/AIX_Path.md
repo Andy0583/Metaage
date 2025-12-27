@@ -1,4 +1,4 @@
-## FC adapter
+## AIX FC adapter
 * 若為VIOS架構，實體HBA卡為10：XX，VIOS會出現虛擬HBA卡給內部LPAR C0:XX使用。
 * SAN SW Zoning若要給VIOS綁實體卡，若要給裡面的LPAR綁虛擬卡(無須綁實體卡)。
 * Zoning前AIX需先打光才認得到（cfgmgr）。
@@ -83,7 +83,7 @@ EMC.PowerStore.aix.rte     6.3.0.2  COMMITTED  DellEMC PowerStore AIX Support
 lsdev -Cc disk 
 hdisk0 Available C2-T1-01 EMC INVISTA FCP MPIO Disk
 ```
-## Path設定
+## AIX Path設定
 ### Path掃描、查詢
 ```
 # 重新掃描，查看Path數量
@@ -180,4 +180,71 @@ hdisk3  4        Enabled  Sel          fscsi0  50001442901f1400,3000000000000
 hdisk3  5        Enabled  Sel          fscsi0  50001442801f1400,3000000000000
 hdisk3  6        Enabled  Sel          fscsi1  50001442901f1400,3000000000000
 hdisk3  7        Enabled  Sel          fscsi1  50001442801f1400,3000000000000
+```
+
+## AIX LUN設定
+### 顯示AIX LUN Info
+* Serial Number可與VPLEX UUID對應
+```
+# 顯示Volume UUID
+lscfg -vl hdisk2
+hdisk2           U9009.22A.78BDBC0-V1-C3-T1-W50001442901F1400-L2000000000000  MPIO Other FC SCSI Disk Drive
+
+      Manufacturer................EMC     
+      Machine Type and Model......Invista         
+      Part Number.................
+      ROS Level and ID............36323130
+      Serial Number...............d89b4866
+      EC Level....................
+      FRU Number..................
+      Device Specific.(Z0)........00620432BC083002
+      Device Specific.(Z1)........301f14ba
+      Device Specific.(Z2)........
+      Device Specific.(Z3)........
+      Device Specific.(Z4).........
+      Device Specific.(Z5)........
+      Device Specific.(Z6)........
+
+# 顯示hdisk容量
+bootinfo -s hdisk2
+204800
+
+# 顯示PVID(physical volume identifier)用於辨識實體HDD組成的PV
+lspv
+hdisk0 000af70de396426b datavg
+hdisk1 000af70d5c816fc2 rootvg
+hdisk2 000af70d4d50358c rootvg
+
+# 顯示hdisk詳細資訊
+lsattr -El hdisk2
+PCM             PCM/friend/fcpother                                    Path Control Module              False
+PR_key_value    none                                                   Persistant Reserve Key Value     True+
+algorithm       round_robin                                            Algorithm                        True+
+clr_q           no                                                     Device CLEARS its Queue on error True
+dist_err_pcnt   0                                                      Distributed Error Percentage     True
+dist_tw_width   50                                                     Distributed Error Sample Time    True
+hcheck_cmd      test_unit_rdy                                          Health Check Command             True+
+hcheck_interval 60                                                     Health Check Interval            True+
+hcheck_mode     nonactive                                              Health Check Mode                True+
+location                                                               Location Label                   True+
+lun_id          0x2000000000000                                        Logical Unit Number ID           False
+lun_reset_spt   yes                                                    LUN Reset Supported              True
+max_coalesce    0x40000                                                Maximum Coalesce Size            True
+max_retry_delay 60                                                     Maximum Quiesce Time             True
+max_transfer    0x80000                                                Maximum TRANSFER Size            True
+min_rw_to       30                                                     Minimum value for rw_timeout     False
+node_name       0x5000144047301f14                                     FC Node Name                     False
+pvid            00cbdbc03a6d0b000000000000000000                       Physical volume identifier       False
+q_err           yes                                                    Use QERR bit                     True
+q_type          simple                                                 Queuing TYPE                     True
+queue_depth     32                                                     Queue DEPTH                      True+
+reassign_to     120                                                    REASSIGN time out value          True
+reserve_policy  no_reserve                                             Reserve Policy                   True+
+rw_max_time     0                                                      Maximum I/O completion time      True+
+rw_timeout      30                                                     READ/WRITE time out value        True
+scsi_id         0x20400                                                SCSI ID                          False
+start_timeout   60                                                     START unit time out value        True
+timeout_policy  fail_path                                              Timeout Policy                   True+
+unique_id       362136000144000000010301F14BAD89B486607Invista03EMCfcp Unique device identifier         False
+ww_name         0x50001442901f1400                                     FC World Wide Name               False
 ```
