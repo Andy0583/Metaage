@@ -248,3 +248,81 @@ timeout_policy  fail_path                                              Timeout P
 unique_id       362136000144000000010301F14BAD89B486607Invista03EMCfcp Unique device identifier         False
 ww_name         0x50001442901f1400                                     FC World Wide Name               False
 ```
+
+### 新增LUN
+```
+# Discovery
+cfgmgr  
+
+# 查看新磁碟（需為Available + MPIO Disk才可使用，需要安裝ODM，否則會有不可預期問題）
+lsdev -Cc disk
+hdisk0  Available C2-T1-01 MPIO Other FC SCSI Disk Drive
+hdisk1  Available C2-T1-01 MPIO Other FC SCSI Disk Drive
+hdisk2  Available C2-T1-01 MPIO Other FC SCSI Disk Drive
+hdisk3  Available C2-T1-01 MPIO Other FC SCSI Disk Drive
+hdisk4  Defined   C2-T1-01 Other FC SCSI Disk Drive
+hdisk5  Defined   C2-T1-01 Other FC SCSI Disk Drive
+hdisk6  Defined   C3-T1-01 Other FC SCSI Disk Drive
+hdisk7  Defined   C3-T1-01 Other FC SCSI Disk Drive
+hdisk8  Defined   C2-T1-01 Other FC SCSI Disk Drive
+hdisk9  Defined   C2-T1-01 Other FC SCSI Disk Drive
+hdisk10 Defined   C3-T1-01 Other FC SCSI Disk Drive
+hdisk11 Defined   C3-T1-01 Other FC SCSI Disk Drive
+hdisk12 Available C2-T1-01 Other FC SCSI Disk Drive
+hdisk13 Available C2-T1-01 Other FC SCSI Disk Drive
+hdisk14 Available C3-T1-01 Other FC SCSI Disk Drive
+hdisk15 Available C3-T1-01 Other FC SCSI Disk Drive
+hdisk16 Available C2-T1-01 MPIO Other FC SCSI Disk Drive
+
+# 將PV進行初始化
+chdev -l hdisk16 -a pv=yes
+hdisk16 changed
+
+# 將hdisk加入新VG
+mkvg -y testvg hdisk16
+testvg
+
+# 或將hdisk加入既有VG
+extendvg testvg hdisk16
+
+# 查看VG內容
+lsvg testvg
+VOLUME GROUP:       testvg                   VG IDENTIFIER:  00cbdbc000004b0000000198ac8d0154
+VG STATE:           active                   PP SIZE:        32 megabyte(s)
+VG PERMISSION:      read/write               TOTAL PPs:      639 (20448 megabytes)
+MAX LVs:            256                      FREE PPs:       639 (20448 megabytes)
+LVs:                0                        USED PPs:       0 (0 megabytes)
+OPEN LVs:           0                        QUORUM:         2 (Enabled)
+TOTAL PVs:          1                        VG DESCRIPTORS: 2
+STALE PVs:          0                        STALE PPs:      0
+ACTIVE PVs:         1                        AUTO ON:        yes
+MAX PPs per VG:     32512                                     
+MAX PPs per PV:     1016                     MAX PVs:        32
+LTG size (Dynamic): 512 kilobyte(s)          AUTO SYNC:      no
+HOT SPARE:          no                       BB POLICY:      relocatable 
+PV RESTRICTION:     none                     INFINITE RETRY: no
+DISK BLOCK SIZE:    512                      CRITICAL VG:    no
+FS SYNC OPTION:     no                       CRITICAL PVs:   no
+ENCRYPTION:         no                                        
+
+# 建立LV並格式化
+crfs -v jfs2 -g testvg -a size=10G -m /test -A yes 
+備註：-A yes （開機自動掛載）
+```
+
+## AIX 常用指令
+```
+# 設定可使用上一道指令
+set -o emacs
+備註：Ctrl-P：上一道指令、Ctrl-N：下一道指令
+
+# 壓測
+dd if=/dev/zero of=/dev/hdisk2 bs=1M count=10k 
+備註：更改of，為要測試hdsik所在，但不要壓OS Disk（容量會爆)，要先建目錄，壓在filesystem上。
+
+# 關機
+shutdown -F
+
+# 重開機
+shutdown -Fr
+```
