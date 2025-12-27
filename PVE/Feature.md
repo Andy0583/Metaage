@@ -84,7 +84,7 @@ JobID      Enabled    Target                           LastSync             Next
 
 ```
 
-### 相關內容：
+### 相關內容
 - 即時刪除Replication Job，Target資料也會一併刪除
 - 二台Node有Replication關係下，可進行VM Migrate，完成後會反向抄寫
 - 在ZFS Storage下的VM，在無Replication關係的Node，是無法進行Migrate
