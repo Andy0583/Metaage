@@ -11,7 +11,7 @@
 * [VPLEXP Reset&Upgrade](<https://github.com/Andy0583/Metaage/blob/main/Dell/VPLEXP_Reset%26Upgrade.md>)
 * [VPLEXP Path POC](<https://github.com/Andy0583/Metaage/blob/main/Dell/VPLEX_Path_POC.md>)
 ### 🔹OS
-* [IBM AIX Path設定](<https://github.com/Andy0583/Metaage/blob/main/OS/AIX_Path.md>)
+* [IBM AIX Path設定](<https://github.com/Andy0583/Metaage/blob/main/OS/AIX.md>)
 
 ---
 ![](https://github.com/Andy0583/share/blob/main/Image/2.png)</p>
