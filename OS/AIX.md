@@ -31,7 +31,7 @@ fcs0    U9009.22A.78BDBC0-V1-C2-T1  Virtual Fibre Channel Client Adapter
         Hardware Location Code......U9009.22A.78BDBC0-V1-C2-T1
 ```
 
-## AIX ODM
+## AIX ODM安裝
 * UDID (Unique device identifier)：Device唯一識別碼。
   * "cfgmgr" command執行時，就會依據UUID來判斷該Device是一顆獨立新的Device，還是為既有Device多條路徑而已。
 * AIX ODM (Object Data Manager)功能：
