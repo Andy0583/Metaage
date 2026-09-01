@@ -1,1 +1,8 @@
 site_name: Andy's Technical Notes
+
+nav:
+  - 首頁: index.md
+  - 儲存系統: storage.md
+  - 虛擬化平台: virtualization.md
+  - Dell CSM: csm.md
+
