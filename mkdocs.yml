@@ -41,7 +41,5 @@ nav:
   - 虛擬化平台:
     - VMWare: vmware.md
     - PVE: pve.md
-  - Dell CSM:
-    - PowerStore CSI: csm/pstcsi.md
-    - Unity CSI: csm/unitycsi.md
+  - Dell CSM: csm/csm.md
   - GRAID: graid/graid.md
