@@ -1,5 +1,13 @@
 site_name: Andy's Technical Notes
-
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    primary: indigo
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
 nav:
   - 首頁: index.md
   - 儲存系統: storage.md
