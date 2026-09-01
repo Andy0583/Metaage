@@ -28,9 +28,9 @@ theme:
     - toc.integrate
 nav:
   - 首頁: index.md
-  - 儲存系統: storage.md
-    - PowerStore: powerstore.md
-    - Unity: unity.md
+  - 儲存系統: 
+    - PowerStore: storage/powerstore.md
+    - Unity: storage/unity.md
   - 虛擬化平台: virtualization.md
     - VMWare: vmware.md
     - PVE: pve.md
