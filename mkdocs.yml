@@ -5,8 +5,17 @@ theme:
   custom_dir: docs/overrides
   palette:
     - scheme: default
-      primary: deep orange
-      accent: orange
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切換至深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切換至淺色模式
   features:
     - navigation.tabs
     - navigation.top
