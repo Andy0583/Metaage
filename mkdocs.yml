@@ -35,7 +35,5 @@ extra_css:
   - overrides/extra.css
 nav:
   - 首頁: index.md
-  - 儲存系統: storage.md
-  - 虛擬化平台:
   - Dell CSM: csm/csm.md
   - GRAID: graid/graid.md
