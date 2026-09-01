@@ -29,8 +29,16 @@ theme:
 nav:
   - 首頁: index.md
   - 儲存系統: storage.md
+    - PowerStore: powerstore.md
+    - Unity: unity.md
   - 虛擬化平台: virtualization.md
+    - VMWare: vmware.md
+    - PVE: pve.md
   - Dell CSM: csm.md
+    - PowerStore CSI: pstcsi.md
+    - PowerStore CSM: pstcsm.md
   - GRAID: graid.md
+    - SupremeRAID AE: ae.md
+    - SupremeRAID SR: sr.md
   
 
