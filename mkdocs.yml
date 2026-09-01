@@ -34,9 +34,9 @@ nav:
   - 虛擬化平台: virtualization.md
     - VMWare: vmware.md
     - PVE: pve.md
-  - Dell CSM: csm.md
-    - PowerStore CSI: pstcsi.md
-    - PowerStore CSM: pstcsm.md
+  - Dell CSM:
+    - PowerStore CSI: csm/pstcsi.md
+    - Unity CSI: csm/unitycsi.md
   - GRAID: graid.md
     - SupremeRAID AE: ae.md
     - SupremeRAID SR: sr.md
