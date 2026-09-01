@@ -2,8 +2,6 @@ site_name: Andy's Technical Notes
 theme:
   name: material
   language: zh-TW
-  logo: images/metaage.png
-  favicon: images/metaage.png
   custom_dir: docs/overrides
   palette:
     - scheme: default
