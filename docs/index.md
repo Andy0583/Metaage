@@ -8,7 +8,7 @@
 ## 推薦文章
 ＊＊＊待更新＊＊＊
 
-## 聯絡方式
-如有問題歡迎與我聯繫:andy0583@gmail.com
+## 聯絡方式 / 任職公司
+如有問題歡迎與我聯繫：andy0583@gmail.com
 
 <img src="images/metaage.png" width="150">
