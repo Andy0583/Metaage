@@ -8,8 +8,9 @@ bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
 -pl ae \
 --offline-install
 ```
-  
 - [SupremeRAID AE檔案下載](https://docs.graidtech.com/sr-ae/release-notes/linux/2.0/2.0.0-217/)
+- 經測試Container再不加任何參數時，依舊會走MPS
+  <img src="images/001.png">
 
 ## SupremeRAID SR
 - [SupremeRAID SR檔案下載](https://docs.graidtech.com/sr/release-notes/linux/2.0/2.0.1/)
