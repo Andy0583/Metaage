@@ -11,4 +11,4 @@
 ## 聯絡方式 / 任職公司
 如有問題歡迎與我聯繫：andy0583@gmail.com
 
-<img src="images/metaage.png" width="150">
+<img src="images/metaage.png" width="200">
