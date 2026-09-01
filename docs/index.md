@@ -1,5 +1,5 @@
 # Andy's Technical Notes
-<font color=#FF0000> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>
+### <font color=#FF0000> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>
 
 ## 最新技術公告
 [Dell CSM技術公告](csm/csm.md)
