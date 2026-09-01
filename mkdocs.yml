@@ -4,6 +4,7 @@ theme:
   language: zh-TW
   font:
     text: Noto Serif TC
+    text_weight: 400
   custom_dir: docs/overrides
   icon:
     logo: material/server-network
