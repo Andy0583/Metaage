@@ -17,6 +17,8 @@ theme:
     - search.highlight
     - content.code.copy
     - toc.integrate
+extra_css:
+  - overrides/extra.css
 nav:
   - 首頁: index.md
   - 儲存系統: storage.md
