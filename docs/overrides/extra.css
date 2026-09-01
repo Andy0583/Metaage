@@ -11,3 +11,6 @@
   color: white !important;
   font-weight: 700;
 }
+body, .md-typeset {
+  color: #111111; /* 將全站內文字體顏色改為極深的黑灰色，增加對比 */
+}
