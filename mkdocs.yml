@@ -1,4 +1,5 @@
 site_name: Andy's Technical Notes
+use_directory_urls: false
 theme:
   name: material
   language: zh-TW
