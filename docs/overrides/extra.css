@@ -14,10 +14,4 @@
 body, .md-typeset {
   color: #111111; /* 將全站內文字體顏色改為極深的黑灰色，增加對比 */
 }
-.md-nav__link--active {
-  color: inherit !important;
-  font-weight: 400 !important;
-}
-.md-nav__link:hover {
-  color: rgba(0, 0, 0, 0.75) !important;
-}
+
