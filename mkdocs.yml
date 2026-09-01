@@ -4,7 +4,8 @@ theme:
   language: zh-TW
   custom_dir: docs/overrides
   palette:
-    primary: indigo
+    primary: deep orange
+    accent: deep orange
   features:
     - navigation.tabs
     - navigation.top
