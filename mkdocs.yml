@@ -2,6 +2,8 @@ site_name: Andy's Technical Notes
 theme:
   name: material
   language: zh-TW
+  font:
+    text: Noto Serif TC
   custom_dir: docs/overrides
   icon:
     logo: material/server-network
