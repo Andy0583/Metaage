@@ -1,17 +1,18 @@
-# Welcome to MkDocs
+# Andy's Technical Notes
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+歡迎來到我的技術筆記站，這裡記錄日常維運、架構設計與故障排除經驗。
 
-## Commands
+## 內容分類
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+- **儲存系統**：Dell PowerStore、Dell Unity 管理與維護
+- **虛擬化平台**：VMware vSphere、Proxmox VE
+- **備份與災難復原**：Veeam Backup & Replication
+- **AI 維運工具**：MCP Server、RAG、自動化排錯流程
 
-## Project layout
+## 最近更新
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- 2026-09-01：網站建置完成
+
+## 聯絡方式
+
+如有問題歡迎與我聯繫。
