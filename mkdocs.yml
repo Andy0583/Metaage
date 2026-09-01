@@ -42,10 +42,7 @@ nav:
     - VMWare: vmware.md
     - PVE: pve.md
   - Dell CSM:
-    - PowerStore CSI: CSM/pstcsi.md
-    - Unity CSI: CSM/unitycsi.md
-  - GRAID:
-    - SupremeRAID AE: ae.md
-    - SupremeRAID SR: sr.md
-  
+    - PowerStore CSI: csm/pstcsi.md
+    - Unity CSI: csm/unitycsi.md
+  - GRAID: graid/graid.md
 
