@@ -2,11 +2,11 @@
 
 
 ## 最新技術公告
-[Dell CSM技術公告](csm/csm.md)
+[Dell CSM 技術公告](csm/csm.md)
 <br>
-[GRAID技術公告](graid/graid.md)
+[GRAID 技術公告](graid/graid.md)
 <br>
-[PVE技術公告](pve/pve.md)
+[PVE 技術公告](pve/pve.md)
 
 ## 最新技術文章
 ＊＊＊待更新＊＊＊
