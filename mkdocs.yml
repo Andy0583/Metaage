@@ -31,13 +31,13 @@ nav:
   - 儲存系統: 
     - PowerStore: storage/powerstore.md
     - Unity: storage/unity.md
-  - 虛擬化平台: virtualization.md
+  - 虛擬化平台:
     - VMWare: vmware.md
     - PVE: pve.md
   - Dell CSM:
     - PowerStore CSI: CSM/pstcsi.md
     - Unity CSI: CSM/unitycsi.md
-  - GRAID: graid.md
+  - GRAID:
     - SupremeRAID AE: ae.md
     - SupremeRAID SR: sr.md
   
