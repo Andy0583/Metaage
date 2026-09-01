@@ -4,11 +4,13 @@
 apt install alien
 
 alien -d pstcli-4.3.0.0.1661.x86_64.release.rpm
-
+```
+```shell
 # 在目標主機上執行（檔案＊.deb 放到/tmp）
 ip route del default
 
-root@openclaw:~# dpkg -l libc6 libcrypt1 libgcc-s1 libstdc++6  #確認相依性套件
+# 確認相依性套件
+dpkg -l libc6 libcrypt1 libgcc-s1 libstdc++6
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
