@@ -37,3 +37,4 @@ nav:
   - 首頁: index.md
   - Dell CSM: csm/csm.md
   - GRAID: graid/graid.md
+  - PVE: pve/pve.md
