@@ -9,7 +9,6 @@ bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
 --offline-install
 ```
 
-
 - SupremeRAID AE檔案下載
 
   https://docs.graidtech.com/sr-ae/release-notes/linux/2.0/2.0.0-217/
