@@ -1,4 +1,4 @@
-# GRAID 技術更新
+# GRAID 最新技術公告
 ## SupremeRAID AE 
 - GRAID 新版的Pre-installer若安裝在離線RedHat上，已無法使用舊語法，需改用下列語法進行安裝：
 ```shell
@@ -12,3 +12,9 @@ bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
 - SupremeRAID AE檔案下載
 
   https://docs.graidtech.com/sr-ae/release-notes/linux/2.0/2.0.0-217/
+
+
+## SupremeRAID SR
+- SupremeRAID SR檔案下載
+
+  https://docs.graidtech.com/sr/release-notes/linux/2.0/2.0.1/
