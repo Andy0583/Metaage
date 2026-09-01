@@ -1,4 +1,3 @@
-# GRAID 技術公告
 ## SupremeRAID AE 
 - GRAID 新版的Pre-installer若安裝在離線RedHat上，已無法使用舊語法，需改用下列語法進行安裝：
   ```shell
