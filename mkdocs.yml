@@ -2,14 +2,21 @@ site_name: Andy's Technical Notes
 theme:
   name: material
   language: zh-TW
+  logo: images/metaage.png
+  favicon: images/metaage.png
   custom_dir: docs/overrides
   palette:
-    primary: deep orange
-    accent: deep orange
+    - scheme: default
+      primary: deep orange
+      accent: orange
   features:
     - navigation.tabs
     - navigation.top
+    - navigation.sections
     - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
 nav:
   - 首頁: index.md
   - 儲存系統: storage.md
