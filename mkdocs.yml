@@ -37,7 +37,7 @@ nav:
   - 儲存系統: 
     - PowerStore: storage/powerstore.md
     - Unity: storage/unity.md
-    - PoweStore CLI安裝： storage/pstcli.md
+    - PoweStore CLI安裝: storage/pstcli.md
   - 虛擬化平台:
     - VMWare: vmware.md
     - PVE: pve.md
