@@ -22,10 +22,10 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.sections
+    - navigation.expand
     - search.suggest
     - search.highlight
     - content.code.copy
-    - toc.integrate
 nav:
   - 首頁: index.md
   - 儲存系統: 
