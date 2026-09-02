@@ -12,12 +12,12 @@
 
 ---
 !!! info "聯絡資訊"
-    <div style="display: flex; justify-content: flex-start; align-items: center; gap: 60px;">
+    <div style="display: flex; justify-content: flex-start; align-items: center; gap: 80px;">
     <div style="font-size: 0.7rem;">
-    **Line ID：** andy0583  
-    **Email：** andy0583@gmail.com
-    **Certificate：** PMP、Dell、Netapp、VMWare、RedHat、Veeam、Gemini、Claud code
-    如有任何技術問題或建議，歡迎隨時與我聯繫。  
+    **Line ID：** andy0583<br>
+    **Email：** andy0583@gmail.com<br>
+    **Certificate：** PMP、Dell、Netapp、VMWare、RedHat、Veeam、Gemini、Claud code<br>
+    如有任何技術問題或建議，歡迎隨時與我聯繫。<br>
     **<font color="red">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
     </div>
     <img src="images/logo.png" width="130">
