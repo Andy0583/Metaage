@@ -46,3 +46,5 @@ nav:
     - MPS Deployment: graid/mps.md
     - GRAID Log收集: graid/collection.md
   - PVE: pve/pve.md
+  - AI: 
+    - NemoClaw安裝: ai/nemoclaw.md
