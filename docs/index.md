@@ -24,5 +24,5 @@
       <img src="images/metaage.png" width="200">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.ginnet.com.tw">
-      <img src="images/ginnet.png" width="200">
+      <img src="images/ginnet.png" width="230">
     </a>
