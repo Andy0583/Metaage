@@ -56,3 +56,6 @@ body, .md-typeset {
 label.md-nav__link {
   display: none;
 }
+.md-content__inner h1:first-child {
+  display: none;
+}
