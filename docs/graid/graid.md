@@ -7,7 +7,7 @@ DKMS_PKG_PATH=/root/dkms-3.4.3-2.el9.noarch.rpm \
 bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
 -pl ae --offline-install
 ```
-- 經測試Container再不加任何參數時，依舊會走MPS
+- 經測試Container不加任何參數時，依舊會走MPS
   <img src="images/001.png">
 - [SupremeRAID AE檔案下載](https://docs.graidtech.com/sr-ae/release-notes/linux/2.0/2.0.0-217/)
 
