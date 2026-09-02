@@ -18,8 +18,9 @@ body, .md-typeset {
   line-height: 1.6;
   overflow: visible;
 }
-.md-footer {
-  background-color: var(--md-primary-fg-color);
+.md-footer,
+.md-footer-meta {
+  background-color: #3f51b5 !important;
 }
 
 .md-footer-copyright,
