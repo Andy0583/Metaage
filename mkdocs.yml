@@ -1,5 +1,7 @@
 site_name: Andy's Technical Notes
 use_directory_urls: false
+extra_javascript:
+  - overrides/extra.js
 theme:
   name: material
   language: zh-TW
