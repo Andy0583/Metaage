@@ -14,7 +14,6 @@
 [SupremeRAID AE安裝](graid/aeinstall.md)<br>
 [GRAID Log收集](graid/collection.md)
 
-### **聯絡方式**
 !!! info "聯絡資訊"
     **Email：** andy0583@gmail.com  
     如有任何技術問題或建議，歡迎隨時與我聯繫。
