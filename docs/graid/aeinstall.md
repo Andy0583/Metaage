@@ -85,7 +85,10 @@ apt-get install -f
 **安裝graid-sr-pre-installer**
 ```
 chmod +x graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run
-bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run -pl ae --offline-install --yes
+
+bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
+-pl ae --offline-install --yes
+
 # 自動重新開機
 ```
 
