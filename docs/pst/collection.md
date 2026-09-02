@@ -1,4 +1,4 @@
-# PST Log collection(SOP)
+# PST Log collection
 
 **先開啟PowerStore SSH**
 
