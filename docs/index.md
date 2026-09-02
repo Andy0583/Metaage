@@ -19,7 +19,7 @@
     如有任何技術問題或建議，歡迎隨時與我聯繫。  
     **<font color="red">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
     </div>
-    <img src="images/logo.png" width="120">
+    <img src="images/logo.png" width="120" style="margin-left: -100px;">
     </div>
 
     ---
