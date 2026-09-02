@@ -32,3 +32,17 @@ body, .md-typeset {
   content: "章節";
   font-size: 0.65rem;
 }
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: #3949ab;
+}
+
+.md-typeset .admonition.info > .admonition-title,
+.md-typeset details.info > summary {
+  background-color: rgba(57, 73, 171, 0.1);
+}
+
+.md-typeset .admonition.info > .admonition-title::before,
+.md-typeset details.info > summary::before {
+  background-color: #3949ab;
+}
