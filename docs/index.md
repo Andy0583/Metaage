@@ -15,7 +15,9 @@
 [GRAID Log收集](graid/collection.md)
 
 ### **聯絡方式**
-如有問題歡迎與我聯繫：andy0583@gmail.com
+!!! info "聯絡資訊"
+    **Email：** andy0583@gmail.com  
+    如有任何技術問題或建議，歡迎隨時與我聯繫。
 
 ### **IT 智能化的最佳夥伴**
 <a href="https://www.metaage.com.tw">
