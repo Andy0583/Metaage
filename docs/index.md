@@ -1,5 +1,5 @@
 # <font color="black">Andy's Technical Notes</font>
-<br>
+
 <a href="https://dtf-tw.com/2026/index.html">
   <img src="images/002.jpg" width="600">
 </a>
