@@ -44,4 +44,5 @@ nav:
     - GRAID技術公告: graid/graid.md
     - SupremeRAID AE安裝: graid/aeinstall.md
     - MPS Deployment: graid/mps.md
+    - GRAID Log收集: graid/collection.md
   - PVE: pve/pve.md
