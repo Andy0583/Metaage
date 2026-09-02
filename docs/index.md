@@ -1,13 +1,13 @@
 # <font color="black">Andy's Technical Notes</font>
 **<font color="red"> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
 
+### **重要活動**
 <a href="https://dtf-tw.com/2026/index.html">
-  <img src="images/002.jpg" width="600">
+  <img src="images/002.jpg" width="700">
 </a>
-
-### **重要技術資訊**
-[SupremeRAID AE安裝](graid/aeinstall.md)<br>
-[GRAID Log收集](graid/collection.md)
+<a href="https://dtf-tw.com/2026/index.html">
+  <img src="images/003.jpg" width="700">
+</a>
 
 !!! info "聯絡資訊"
     **Email：** andy0583@gmail.com  
