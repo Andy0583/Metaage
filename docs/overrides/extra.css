@@ -18,9 +18,13 @@ body, .md-typeset {
   line-height: 1.6;
   overflow: visible;
 }
+.md-footer {
+  background-color: var(--md-primary-fg-color);
+}
+
 .md-footer-copyright,
 .md-footer-copyright * {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: white !important;
 }
 
 .md-footer-copyright {
@@ -28,8 +32,4 @@ body, .md-typeset {
   justify-content: space-between;
   width: 100%;
   padding: 0 16px;
-}
-
-.md-footer-copyright a {
-  color: rgba(255, 255, 255, 0.9) !important;
 }
