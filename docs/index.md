@@ -14,10 +14,15 @@
 
 ---
 !!! info "聯絡資訊"
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
     **Line ID：** andy0583  
     **Email：** andy0583@gmail.com  
-    如有任何技術問題或建議，歡迎隨時與我聯繫。<br>
+    如有任何技術問題或建議，歡迎隨時與我聯繫。  
     **<font color="red">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
+    </div>
+    <img src="images/logo.jpeg" width="150">
+    </div>
 
     ---
     <a href="https://www.dell.com">
