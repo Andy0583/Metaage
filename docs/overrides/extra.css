@@ -53,3 +53,7 @@ body, .md-typeset {
 .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link[href$="index.html"] {
   display: none;
 }
+.md-nav__item--section > .md-nav__link,
+.md-nav--primary .md-nav__title[for] {
+  display: none;
+}
