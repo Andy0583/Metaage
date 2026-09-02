@@ -18,7 +18,8 @@
     **Email：** andy0583@gmail.com  
     如有任何技術問題或建議，歡迎隨時與我聯繫。
 
-### **IT 智能化的最佳夥伴**
-<a href="https://www.metaage.com.tw">
-  <img src="images/metaage.png" width="200">
-</a>
+    ---
+
+    <a href="https://www.metaage.com.tw">
+      <img src="images/metaage.png" width="200">
+    </a>
