@@ -8,8 +8,10 @@
 <br>
 [PVE 技術公告](pve/pve.md)
 
-## 最新技術文章
-＊＊＊待更新＊＊＊
+## 重要技術文章
+[SupremeRAID AE安裝](graid/aeinstall.md)
+<br>
+[GRAID Log收集](graid/collection.md)
 
 ## 聯絡方式
 如有問題歡迎與我聯繫：andy0583@gmail.com
