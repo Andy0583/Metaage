@@ -36,5 +36,7 @@ extra_css:
 nav:
   - 首頁: index.md
   - Dell CSM: csm/csm.md
+  - PowerStore: 
+    - PSTCLI安裝: pst/pstcli.md
   - GRAID: graid/graid.md
   - PVE: pve/pve.md
