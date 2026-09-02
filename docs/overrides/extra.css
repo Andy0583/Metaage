@@ -29,7 +29,7 @@ body, .md-typeset {
   font-size: 0;
 }
 .md-sidebar--secondary .md-nav__title::after {
-  content: "章節";
+  content: "Table of contents";
   font-size: 0.65rem;
 }
 .md-typeset .admonition.info,
