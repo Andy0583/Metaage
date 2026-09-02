@@ -46,3 +46,6 @@ body, .md-typeset {
 .md-typeset details.info > summary::before {
   background-color: #3949ab;
 }
+.md-sidebar--primary .md-nav__list > .md-nav__item:first-child {
+  display: none;
+}
