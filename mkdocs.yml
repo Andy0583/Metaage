@@ -39,5 +39,6 @@ nav:
   - PowerStore: 
     - PSTCLI安裝: pst/pstcli.md
     - PST Replication: pst/pstrep.md
+    - PST Log收集: pst/collection.md
   - GRAID: graid/graid.md
   - PVE: pve/pve.md
