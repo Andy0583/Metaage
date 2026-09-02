@@ -1,19 +1,3 @@
-## RHEL9 線上安裝AE
----
-**安裝graid-sr-pre-installer**
-```
-wget https://download.graidtech.com/driver/pre-install/graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
-chmod +x graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
-bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run -pl ae --yes
- # 自動重新開機
-```
-
-**安裝graid-sr-installer**
-```
-wget https://download.graidtech.com/driver/sr-ae/linux/2.0.0-217/release/graid-sr-ae-installer-2.0.0-am86-217-201.run
-bash graid-sr-ae-installer-2.0.0-am86-217-201.run --accept-license
-```
-
 ## RHEL9 離線安裝AE (T400)
 ---
 **RHEL設定**
@@ -56,6 +40,55 @@ bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
 ```
 
 **加入T400卡id**
+```
+vim /etc/graid_pre_installer.conf
+EXPECTED_GPU_CARDS="1ff2"
+```
+
+## Ubuntu 線上安裝AE
+---
+**安裝graid-sr-pre-installer**
+```
+wget https://download.graidtech.com/driver/pre-install/graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
+chmod +x graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
+bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run -pl ae --yes
+ # 自動重新開機
+```
+
+**安裝graid-sr-installer**
+```
+wget https://download.graidtech.com/driver/sr-ae/linux/2.0.0-217/release/graid-sr-ae-installer-2.0.0-am86-217-201.run
+bash graid-sr-ae-installer-2.0.0-am86-217-201.run --accept-license
+```
+
+## Ubuntu離線安裝AE (T400)
+---
+**升級Kernel**
+[檔案下載](https://dtimis-my.sharepoint.com/:u:/g/personal/andyhsu_ginnet_com_tw/IQBeTbQAYhQaRKmG5tbCWPijAXjz8T7m5lLUqf7Fgj9lM1I?e=GbNiNC)
+```
+tar xzvf kernel-6.8.0-138.tar.gz
+dpkg -i *.deb
+apt-get install -f
+update-grub
+reboot
+```
+
+**安裝所需套件**
+[檔案下載](https://dtimis-my.sharepoint.com/:u:/g/personal/andyhsu_ginnet_com_tw/IQA3g6s5SNRrRaVZIqZctW3rAXFVl9QFpzkF0mbO-EQgykE?e=ZVmL9Q)
+```
+tar xzf graid-complete.tar.gz
+dpkg -i *.deb
+apt-get install -f
+```
+
+**安裝graid-sr-pre-installer**
+```
+chmod +x graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run
+bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run -pl ae --offline-install --yes
+# 自動重新開機
+```
+
+**加T400 id**
 ```
 vim /etc/graid_pre_installer.conf
 EXPECTED_GPU_CARDS="1ff2"
