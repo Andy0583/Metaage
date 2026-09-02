@@ -2,16 +2,13 @@
 
 ### 最新技術公告
 ---
-[Dell CSM 技術公告](csm/csm.md)
-<br>
-[GRAID 技術公告](graid/graid.md)
-<br>
+[Dell CSM 技術公告](csm/csm.md)<br>
+[GRAID 技術公告](graid/graid.md)<br>
 [PVE 技術公告](pve/pve.md)
 
 ### 重要技術文章
 ---
-[SupremeRAID AE安裝](graid/aeinstall.md)
-<br>
+[SupremeRAID AE安裝](graid/aeinstall.md)<br>
 [GRAID Log收集](graid/collection.md)
 
 ### 聯絡方式
