@@ -12,6 +12,7 @@
 [GRAID 技術公告](graid/graid.md)<br>
 [Dell CSM技術公告](csm/csm.md)
 
+---
 !!! info "聯絡資訊"
     **Email：** andy0583@gmail.com  
     如有任何技術問題或建議，歡迎隨時與我聯繫。<br>
