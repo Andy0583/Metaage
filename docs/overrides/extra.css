@@ -4,7 +4,6 @@
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
-
 .md-tabs__link:hover,
 .md-tabs__link--active {
   opacity: 1 !important;
@@ -12,7 +11,7 @@
   font-weight: 700;
 }
 body, .md-typeset {
-  color: #111111; /* 將全站內文字體顏色改為極深的黑灰色，增加對比 */
+  color: #111111;
 }
 .md-nav__link {
   line-height: 1.6;
@@ -20,17 +19,17 @@ body, .md-typeset {
 }
 .md-footer,
 .md-footer-meta {
-  background-color: #3f51b5 !important;
+  background-color: #3949ab !important;
 }
-
 .md-footer-copyright,
+.md-footer-copyright a,
+.md-footer-copyright span,
 .md-footer-copyright * {
-  color: white !important;
+  color: #ffffff !important;
 }
-
 .md-footer-copyright {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 16px;
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 0 16px !important;
 }
