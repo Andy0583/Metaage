@@ -12,8 +12,8 @@
 
 ---
 !!! info "聯絡資訊"
-    <div style="display: flex; justify-content: flex-start; align-items: center; gap: 30px;">
-    <div>
+    <div style="display: flex; justify-content: flex-start; align-items: center; gap: 60px;">
+    <div style="font-size: 1.1rem;">
     **Line ID：** andy0583  
     **Email：** andy0583@gmail.com  
     如有任何技術問題或建議，歡迎隨時與我聯繫。  
