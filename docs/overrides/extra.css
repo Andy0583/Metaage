@@ -48,4 +48,8 @@ body, .md-typeset {
   margin-bottom: 0.3em;
 }
 .md-typeset h1 + p {
-  margin-top:
+  margin-top: -0.5em;
+}
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link[href$="index.html"] {
+  display: none;
+}
