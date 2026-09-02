@@ -64,3 +64,8 @@ label.md-nav__link {
 .md-content__inner > h1:first-child + * {
   margin-top: 0;
 }
+.md-header__topic .md-ellipsis {
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
