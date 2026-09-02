@@ -1,4 +1,5 @@
 ### Bastion前置作業
+---
 **指定ISO為repo**
 ```
 mkdir /var/repo
