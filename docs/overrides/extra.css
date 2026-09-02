@@ -18,3 +18,14 @@ body, .md-typeset {
   line-height: 1.6;
   overflow: visible;
 }
+.md-footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 0 16px;
+}
+
+.md-footer-copyright a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
