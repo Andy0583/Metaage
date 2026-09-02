@@ -19,7 +19,9 @@
     <font color="red">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>
 
     ---
-
+    <a href="https://www.dell.com">
+      <img src="images/dell.png" width="200">
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.metaage.com.tw">
       <img src="images/metaage.png" width="200">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
