@@ -1,4 +1,20 @@
-## RHEL9 安裝AE (T400)
+## RHEL9 線上安裝AE
+---
+**安裝graid-sr-pre-installer**
+```
+wget https://download.graidtech.com/driver/pre-install/graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
+chmod +x graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
+bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run -pl ae --yes
+ # 自動重新開機
+```
+
+**安裝graid-sr-installer**
+```
+wget https://download.graidtech.com/driver/sr-ae/linux/2.0.0-217/release/graid-sr-ae-installer-2.0.0-am86-217-201.run
+bash graid-sr-ae-installer-2.0.0-am86-217-201.run --accept-license
+```
+
+## RHEL9 離線安裝AE (T400)
 ---
 **RHEL設定**
 ```
@@ -47,5 +63,5 @@ EXPECTED_GPU_CARDS="1ff2"
 
 **安裝SupremeRAID AE Only for T400**
 ```
-bash ****graid-sr-ae-installer-2.0.0-tu75-193-174.run
+bash ****graid-sr-ae-installer-2.0.0-tu75-193-174.run --accept-license
 ```
