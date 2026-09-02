@@ -40,7 +40,7 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 nav:
-  - 首頁: index.md
+  - Home: index.md
   - Dell CSM: csm/csm.md
   - PowerStore: 
     - PSTCLI安裝: pst/pstcli.md
@@ -52,7 +52,7 @@ nav:
     - MPS Deployment: graid/mps.md
     - GRAID Log收集: graid/collection.md
   - PVE: pve/pve.md
-  - OCP 離線安裝: 
+  - OCP: 
     - Harbor 安裝: ocp/harbor.md
     - OCP SNO 安裝: ocp/snoinstall.md
   - AI: 
