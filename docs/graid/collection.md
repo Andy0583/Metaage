@@ -5,6 +5,7 @@
 **檔案解壓縮**
 ```
 tar -xvf graid_log_script.tar.gz
+
 ._graid-logs-tool
 tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.macl'
 graid-logs-tool/
@@ -15,9 +16,8 @@ graid-logs-tool/graid-log-collector.sh
 
 **執行Log收集**
 ```
-cd graid-logs-tool/
-
 bash graid-log-collector.sh
+
 Checking network connectivity...
 Network is not available.
 Warning: Network is not available. Skipping update check.
@@ -70,6 +70,7 @@ Please upload the compressed log file to Graid support team for analysis.
 **檔案收集**
 ```
 ll
+
 total 9752
 drwxr-xr-x 2  501 staff    4096 Aug 31 14:07 ./
 drwxr-x--- 5 andy andy     4096 Aug 31 14:01 ../
