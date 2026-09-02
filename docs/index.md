@@ -1,4 +1,8 @@
 # <font color="black">Andy's Technical Notes</font>
+<br>
+<a href="https://dtf-tw.com/2026/index.html">
+  <img src="images/002.jpg" width="600">
+</a>
 
 ### **最新技術公告**
 [Dell CSM 技術公告](csm/csm.md)<br>
@@ -13,8 +17,3 @@
 如有問題歡迎與我聯繫：andy0583@gmail.com
 
 **<font color="red"> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
-<br>
-<br>
-<a href="https://dtf-tw.com/2026/index.html">
-  <img src="images/002.jpg" width="600">
-</a>
