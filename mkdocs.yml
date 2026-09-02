@@ -38,5 +38,6 @@ nav:
   - Dell CSM: csm/csm.md
   - PowerStore: 
     - PSTCLI安裝: pst/pstcli.md
+    - PST Replication: pst/pstrep.md
   - GRAID: graid/graid.md
   - PVE: pve/pve.md
