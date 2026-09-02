@@ -17,19 +17,11 @@ body, .md-typeset {
   line-height: 1.6;
   overflow: visible;
 }
-.md-footer,
 .md-footer-meta {
   background-color: #3949ab !important;
 }
-.md-footer-copyright,
-.md-footer-copyright a,
-.md-footer-copyright span,
-.md-footer-copyright * {
+.md-footer-meta,
+.md-footer-meta span,
+.md-footer-meta a {
   color: #ffffff !important;
-}
-.md-footer-copyright {
-  display: flex !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  padding: 0 16px !important;
 }
