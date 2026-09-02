@@ -25,3 +25,10 @@ body, .md-typeset {
 .md-footer-meta a {
   color: #ffffff !important;
 }
+.md-sidebar--secondary .md-nav__title {
+  font-size: 0;
+}
+.md-sidebar--secondary .md-nav__title::after {
+  content: "章節";
+  font-size: 0.65rem;
+}
