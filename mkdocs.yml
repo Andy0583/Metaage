@@ -40,5 +40,7 @@ nav:
     - PSTCLI安裝: pst/pstcli.md
     - PST Replication: pst/pstrep.md
     - PST Log收集: pst/collection.md
-  - GRAID: graid/graid.md
+  - GRAID: 
+    - GRAID技術公告: graid/graid.md
+    - SupremeRAID AE安裝: graid/aeinstall.md
   - PVE: pve/pve.md
