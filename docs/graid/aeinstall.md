@@ -1,4 +1,4 @@
-## SupremeRAID AE For RHEL 9.6 SOP(T400)
+## RHEL 9.6 安裝(T400)
 ---
 ### RHEL設定
 ```
