@@ -49,3 +49,6 @@ body, .md-typeset {
 .md-sidebar--primary .md-nav__list > .md-nav__item:first-child {
   display: none;
 }
+.md-typeset h1 {
+  margin-bottom: 0.3em;
+}
