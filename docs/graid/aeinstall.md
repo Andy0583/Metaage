@@ -33,6 +33,7 @@ dnf makecache
 ```
 
 **安裝graid-sr-pre-installer**
+[檔案下載](https://dtimis-my.sharepoint.com/:u:/g/personal/andyhsu_ginnet_com_tw/IQBoIKC8omrAQpF1BdAAQrxxAb3Ho2LzFpp4_BqMLyeFuik?e=Q7an7A)
 ```
 LOCAL_ISO_PATH=/mnt/dvd/ DKMS_PKG_PATH=/root/dkms-3.4.3-2.el9.noarch.rpm \
 bash graid-sr-pre-installer-2.0.0-nv580-270-x86_64.run \
