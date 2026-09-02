@@ -4,13 +4,15 @@
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
-.md-tabs__link:hover,
-.md-tabs__link--active {
+.md-tabs__link:hover {
   opacity: 1 !important;
   color: white !important;
   font-weight: 700;
 }
-.md-tabs__link--active {
+.md-tabs__item--active .md-tabs__link {
+  opacity: 1 !important;
+  color: white !important;
+  font-weight: 700;
   border-bottom: 2px solid white;
   padding-bottom: 2px;
 }
