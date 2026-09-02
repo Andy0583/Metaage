@@ -1,4 +1,5 @@
 # <font color="black">Andy's Technical Notes</font>
+**<font color="red"> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
 
 <a href="https://dtf-tw.com/2026/index.html">
   <img src="images/002.jpg" width="600">
@@ -16,4 +17,7 @@
 ### **聯絡方式**
 如有問題歡迎與我聯繫：andy0583@gmail.com
 
-**<font color="red"> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
+### **IT 智能化的最佳夥伴**
+<a href="https://www.metaage.com.tw">
+  <img src="images/metaage.png" width="200">
+</a>
