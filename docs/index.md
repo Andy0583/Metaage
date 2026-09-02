@@ -1,5 +1,5 @@
 # <font color="black">Andy's Technical Notes</font>
-**<font color="red"> 請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
+<span style="color:red; font-weight:bold; display:block; margin-top:-10px;">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</span>
 
 ### **重要活動**
 <a href="https://dtf-tw.com/2026/index.html">
