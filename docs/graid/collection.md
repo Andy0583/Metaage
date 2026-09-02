@@ -1,4 +1,4 @@
-### Log Collection
+## Log Collection
 ---
 [Log Script檔案下載](https://download.graidtech.com/misc/tools/graid_log_collector/linux/graid_log_script.tar.gz)
 
