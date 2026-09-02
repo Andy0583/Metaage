@@ -1,9 +1,9 @@
-# PSTCLI 離線
+# PSTCLI 安裝
 
 - Ubuntu
 
-```html
-# 可上網主機
+```
+# 在可上網主機
 apt install alien
 
 alien -d pstcli-4.3.0.0.1661.x86_64.release.rpm
