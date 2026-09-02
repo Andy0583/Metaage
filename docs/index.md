@@ -13,7 +13,7 @@
 ---
 !!! info "聯絡資訊"
     <div style="display: flex; justify-content: flex-start; align-items: center; gap: 60px;">
-    <div style="font-size: 0.5rem;">
+    <div style="font-size: 0.8rem;">
     **Line ID：** andy0583  
     **Email：** andy0583@gmail.com  
     如有任何技術問題或建議，歡迎隨時與我聯繫。  
@@ -24,11 +24,11 @@
 
     ---
     <a href="https://www.dell.com">
-      <img src="images/dell.png" width="150">
+      <img src="images/dell.png" width="170">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.metaage.com.tw">
-      <img src="images/metaage.png" width="150">
+      <img src="images/metaage.png" width="170">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.ginnet.com.tw">
-      <img src="images/ginnet.png" width="170">
+      <img src="images/ginnet.png" width="190">
     </a>
