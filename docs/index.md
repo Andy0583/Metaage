@@ -1,5 +1,3 @@
-# <font color="black">Andy's Technical Notes</font>
-
 ### **<font color="red">重要活動</font>**
 <a href="https://dtf-tw.com/2026/index.html">
   <img src="images/002.jpg" width="700">
