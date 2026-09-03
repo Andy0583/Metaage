@@ -11,7 +11,7 @@
 </a>
 
 <a class="news-card" href="https://techorange.com/2026/05/26/delltechnologies-private-cloud-automation-platform-powerstore/" target="_blank">
-  <img class="news-image" src="images/dell1.png" width="50">
+  <img src="images/dell1.png" style="width:100%; height:180px; object-fit:cover; border-radius:4px; margin-bottom:10px;">
   <div class="news-tags"><span>新聞</span><span>DPC</span><span>Dell</span></div>
   <div class="news-title">Dell Private Cloud</div>
   <div class="news-desc">打造兼具彈性與效率的現代化架構</div>
