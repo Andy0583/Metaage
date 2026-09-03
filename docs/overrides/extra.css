@@ -170,3 +170,6 @@ article.md-content__inner > h1:first-child + * {
   display: block;
   margin-bottom: 8px;
 }
+.link-box p {
+  margin: 4px 0 !important;
+}
