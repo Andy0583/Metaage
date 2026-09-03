@@ -167,8 +167,7 @@ article.md-content__inner > h1:first-child + * {
   margin-bottom: 12px;
 }
 .link-box a {
-  display: block;
-  margin-bottom: 8px;
+  display: inline;
 }
 .link-box p {
   margin: 4px 0 !important;
