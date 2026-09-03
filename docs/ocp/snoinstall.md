@@ -1,4 +1,5 @@
-###**<font color="red">Bastion 前置作業</font>**---
+###**<font color="red">Bastion 前置作業</font>**
+---
 **指定ISO為repo**
 ```
 mkdir /var/repo
