@@ -25,14 +25,6 @@
   <div class="news-date">2026-09-03</div>
 </a>
 
-<a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
-  <img class="news-image" src="images/pst.png">
-  <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
-  <div class="news-title">戴爾 PowerStore 第三代</div>
-  <div class="news-desc">多年來最激進的企業儲存變革</div>
-  <div class="news-date">2026-09-03</div>
-</a>
-
 </div>
 
 
