@@ -3,11 +3,11 @@
 </a>
 <br>
 <div class="news-grid">
-<a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
-  <img class="news-image" src="images/pst.png">
+<a class="news-card" href="https://www.ithome.com.tw/pr/177462" target="_blank">
+  <img class="news-image" src="images/dell2.png">
   <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
-  <div class="news-title">戴爾 PowerStore 第三代</div>
-  <div class="news-desc">多年來最激進的企業儲存變革</div>
+  <div class="news-title">Dell PowerStore Elite</div>
+  <div class="news-desc">持續現代化資料平臺強勢亮相</div>
 </a>
 
 <a class="news-card" href="https://techorange.com/2026/05/26/delltechnologies-private-cloud-automation-platform-powerstore/" target="_blank">
