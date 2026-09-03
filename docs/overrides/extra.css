@@ -23,8 +23,17 @@ body, .md-typeset {
   line-height: 1.6;
   overflow: visible;
 }
+.md-header {
+  background-color: #5c6bc0 !important;
+}
+.md-tabs {
+  background-color: #5c6bc0 !important;
+}
+.md-footer {
+  background-color: #5c6bc0 !important;
+}
 .md-footer-meta {
-  background-color: #3949ab !important;
+  background-color: #4a58a8 !important;
 }
 .md-footer-meta,
 .md-footer-meta span,
