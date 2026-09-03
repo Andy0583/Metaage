@@ -8,7 +8,8 @@
 
 ### **<font color="red">重要資訊更新</font>**
 [GRAID 技術公告](graid/graid.md)<br>
-[Dell CSM技術公告](csm/csm.md)
+[Dell CSM技術公告](csm/csm.md)<br>
+[Dell相關新聞資訊](https://www.ithome.com.tw/tags/dell)
 
 ---
 !!! info "聯絡資訊"
