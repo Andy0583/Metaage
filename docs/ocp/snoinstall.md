@@ -1,4 +1,4 @@
-### Bastion 前置作業
+## Bastion 前置作業
 ---
 **指定ISO為repo**
 ```
@@ -35,7 +35,7 @@ setenforce 0
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 ```
 
-### Infra 安裝
+## Infra 安裝
 ---
 **安裝相關tool**
 ```
