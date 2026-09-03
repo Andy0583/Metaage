@@ -1,5 +1,4 @@
-## RHEL9 離線安裝AE (T400)
----
+### **<font color="red">RHEL9 離線安裝AE (T400)</font>**   
 **RHEL設定**
 ```
 # 關閉安全性及防火牆
@@ -46,8 +45,7 @@ vim /etc/graid_pre_installer.conf
 EXPECTED_GPU_CARDS="1ff2"
 ```
 
-## Ubuntu 線上安裝AE
----
+### **<font color="red">Ubuntu 線上安裝AE</font>**   
 **安裝graid-sr-pre-installer**
 ```
 wget https://download.graidtech.com/driver/pre-install/graid-sr-pre-installer-2.0.x-nv580-288-x86_64.run
@@ -62,8 +60,7 @@ wget https://download.graidtech.com/driver/sr-ae/linux/2.0.0-217/release/graid-s
 bash graid-sr-ae-installer-2.0.0-am86-217-201.run --accept-license
 ```
 
-## Ubuntu 離線安裝AE (T400)
----
+### **<font color="red">Ubuntu 離線安裝AE (T400)</font>**   
 **升級Kernel**
 [檔案下載](https://dtimis-my.sharepoint.com/:u:/g/personal/andyhsu_ginnet_com_tw/IQBeTbQAYhQaRKmG5tbCWPijAXjz8T7m5lLUqf7Fgj9lM1I?e=GbNiNC)
 ```
