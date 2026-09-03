@@ -6,10 +6,39 @@
   <img src="images/003.jpg" width="700">
 </a>
 
-### **<font color="red">快速連結</font>**
+### **<font color="red">資訊分享</font>**
+<div class="news-grid">
+
+<a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
+  <img class="news-image" src="images/pst.png">
+  <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
+  <div class="news-title">戴爾 PowerStore 第三代</div>
+  <div class="news-desc">多年來最激進的企業儲存變革</div>
+  <div class="news-date">2026-09-03</div>
+</a>
+
+<a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
+  <img class="news-image" src="images/pst.png">
+  <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
+  <div class="news-title">戴爾 PowerStore 第三代</div>
+  <div class="news-desc">多年來最激進的企業儲存變革</div>
+  <div class="news-date">2026-09-03</div>
+</a>
+
+<a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
+  <img class="news-image" src="images/pst.png">
+  <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
+  <div class="news-title">戴爾 PowerStore 第三代</div>
+  <div class="news-desc">多年來最激進的企業儲存變革</div>
+  <div class="news-date">2026-09-03</div>
+</a>
+
+</div>
+
+
+### **<font color="red">官方連結</font>**
 [NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
 [Fabric Manager 官方下載](https://developer.download.nvidia.com/compute/nvidia-driver/redist/fabricmanager/linux-x86_64/)<br>
-[Dell 相關新聞資訊](https://www.ithome.com.tw/tags/dell)
 
 ### **<font color="red">Target Code快速查詢</font>**
 [Dell Connectrix](https://www.dell.com/support/kbdoc/en-us/000228560/minimum-recommended-and-latest-code-versions-for-networking-products)<br>
