@@ -1,4 +1,4 @@
-## Bastion 前置作業
+## **Bastion 前置作業**
 ---
 **指定ISO為repo**
 ```
