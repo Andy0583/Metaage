@@ -49,3 +49,5 @@ nav:
   - OCP: 
     - Harbor 安裝: ocp/harbor.md
     - OCP SNO 安裝: ocp/snoinstall.md
+  - PVE:
+    - 初始化安裝: pve/install.md
