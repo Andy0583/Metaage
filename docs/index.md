@@ -24,7 +24,7 @@
       <img src="images/dell.png" width="170">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.metaage.com.tw">
-      <img src="images/metaage.png" width="180">
+      <img src="images/metaage.png" width="190">
     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.ginnet.com.tw">
       <img src="images/ginnet.png" width="180">
