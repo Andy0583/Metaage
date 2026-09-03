@@ -3,7 +3,6 @@
 </a>
 <br>
 <div class="news-grid">
-
 <a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
   <img class="news-image" src="images/pst.png">
   <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
@@ -17,9 +16,7 @@
   <div class="news-title">Dell Private Cloud</div>
   <div class="news-desc">打造兼具彈性與效率的現代化架構</div>
 </a>
-
 </div>
-<br>
 
 ### **<font color="red">官方連結</font>**
 [NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
