@@ -1,5 +1,4 @@
 ### **<font color="red">Bastion 前置作業</font>**
----
 **指定ISO為repo**
 ```
 mkdir /var/repo
@@ -34,9 +33,7 @@ systemctl disable firewalld
 setenforce 0
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 ```
-
-## Infra 安裝
----
+### **<font color="red">Infra 安裝</font>**
 **安裝相關tool**
 ```
 mkdir -p /home/ocp-offline
