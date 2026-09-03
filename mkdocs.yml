@@ -34,6 +34,7 @@ theme:
 extra_css:
   - overrides/extra.css
 markdown_extensions:
+  - md_in_html
   - admonition
   - attr_list
   - pymdownx.emoji:
