@@ -4,7 +4,7 @@
 <br>
 <div class="news-grid">
 <a class="news-card" href="https://www.ithome.com.tw/pr/177462" target="_blank">
-  <img class="news-image" src="images/dell2.png">
+  <img src="images/dell2.png" style="width:100%; height:180px; object-fit:cover; border-radius:4px; margin-bottom:10px;">
   <div class="news-tags"><span>新聞</span><span>PowerStore</span><span>Dell</span></div>
   <div class="news-title">Dell PowerStore Elite</div>
   <div class="news-desc">持續現代化資料平臺強勢亮相</div>
