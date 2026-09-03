@@ -1,9 +1,7 @@
-### **<font color="red">重要活動</font>**
 <a href="https://dtf-tw.com/2026/index.html">
   <img src="images/002.jpg" width="700">
 </a>
-
-### **<font color="red">資訊分享</font>**
+<br>
 <div class="news-grid">
 
 <a class="news-card" href="https://www.storagereview.com/zh-TW/review/dell-powerstore-gen-3" target="_blank">
@@ -21,7 +19,7 @@
 </a>
 
 </div>
-
+<br>
 
 ### **<font color="red">官方連結</font>**
 [NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
