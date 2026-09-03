@@ -2,9 +2,6 @@
 <a href="https://dtf-tw.com/2026/index.html">
   <img src="images/002.jpg" width="700">
 </a>
-<a href="https://dtf-tw.com/2026/index.html">
-  <img src="images/003.jpg" width="700">
-</a>
 
 ### **<font color="red">資訊分享</font>**
 <div class="news-grid">
