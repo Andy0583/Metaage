@@ -6,9 +6,9 @@
   <img src="images/003.jpg" width="700">
 </a>
 
-### **<font color="red">重要資訊更新</font>**
-[GRAID 技術公告](graid/graid.md)<br>
-[Dell CSM技術公告](csm/csm.md)<br>
+### **<font color="red">快速連結</font>**
+[NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
+[Fabric Manager 官方下載](https://developer.download.nvidia.com/compute/nvidia-driver/redist/fabricmanager/linux-x86_64/)<br>
 [Dell相關新聞資訊](https://www.ithome.com.tw/tags/dell)
 
 ---
