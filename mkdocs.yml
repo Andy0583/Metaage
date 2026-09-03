@@ -47,7 +47,7 @@ nav:
     - SupremeRAID AE安裝: graid/aeinstall.md
     - MPS Deployment: graid/mps.md
     - GRAID Log收集: graid/collection.md
-  - OCP Cluster: 
+  - OCP: 
     - OCP SNO 離線安裝: ocp/snoinstall.md
     - Harbor 離線安裝: ocp/harbor.md
   - Proxmox:
