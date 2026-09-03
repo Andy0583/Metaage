@@ -1,5 +1,5 @@
 <a href="https://dtf-tw.com/2026/index.html">
-  <img src="images/002.jpg" width="700">
+  <img src="images/002.jpg" width="800">
 </a>
 <br>
 <div class="news-grid">
