@@ -18,8 +18,6 @@
 </a>
 </div>
 
-<div class="link-columns">
-
 <div class="link-columns" markdown="1">
 
 <div class="link-box" markdown="1">
