@@ -24,7 +24,8 @@
 ### **官方連結**
 
 [NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
-[Fabric Manager 官方下載](https://developer.download.nvidia.com/compute/nvidia-driver/redist/fabricmanager/linux-x86_64/)
+[Fabric Manager 官方下載](https://developer.download.nvidia.com/compute/nvidia-driver/redist/fabricmanager/linux-x86_64/)<br>
+[Veeam 官方下載](https://www.veeam.com/products/downloads/latest-version.html)
 </div>
 
 <div class="link-box" markdown="1">
