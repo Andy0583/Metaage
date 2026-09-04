@@ -21,7 +21,7 @@
 <div class="link-columns" markdown="1">
 
 <div class="link-box" markdown="1">
-### **官方連結**
+### **官方下載**
 
 [NVIDIA Drivers 官方下載](https://developer.nvidia.com/datacenter-driver-archive)<br>
 [Fabric Manager 官方下載](https://developer.download.nvidia.com/compute/nvidia-driver/redist/fabricmanager/linux-x86_64/)<br>
@@ -29,11 +29,11 @@
 </div>
 
 <div class="link-box" markdown="1">
-### **Target Code快速查詢**
+### **快速查詢**
 
-[Dell Connectrix](https://www.dell.com/support/kbdoc/en-us/000228560/minimum-recommended-and-latest-code-versions-for-networking-products)<br>
-[Dell PowerStore](https://www.dell.com/support/kbdoc/zh-tw/000175213/powerstoreos-matrix)<br>
-[Dell Unity](https://www.dell.com/support/kbdoc/en-us/000020641/dell-emc-unity-oe-revision-matrix?lang=en)
+[Dell Connectrix Target Code](https://www.dell.com/support/kbdoc/en-us/000228560/minimum-recommended-and-latest-code-versions-for-networking-products)<br>
+[Dell PowerStore Target Code](https://www.dell.com/support/kbdoc/zh-tw/000175213/powerstoreos-matrix)<br>
+[Dell Unity Target Code](https://www.dell.com/support/kbdoc/en-us/000020641/dell-emc-unity-oe-revision-matrix?lang=en)
 </div>
 
 </div>
