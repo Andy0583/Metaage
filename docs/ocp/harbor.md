@@ -166,5 +166,26 @@ podman-compose up -d
 
 **重開機自動啟動Harbor**
 ```
-podman generate systemd --new --name harbor-core --files
+cat > /etc/systemd/system/harbor.service <<'EOF'
+[Unit]
+Description=Harbor
+After=network-online.target podman.socket
+Wants=network-online.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/data/harbor
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/root/.local/bin
+ExecStart=/usr/local/bin/podman-compose up -d
+ExecStop=/usr/local/bin/podman-compose down
+TimeoutStartSec=0
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+
+systemctl enable --now harbor.service
+
+systemctl status harbor.service --no-pager
 ```
