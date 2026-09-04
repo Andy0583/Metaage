@@ -167,13 +167,16 @@ podman-compose up -d
 cat > /etc/systemd/system/harbor.service <<'EOF'
 [Unit]
 Description=Harbor
-After=network-online.target podman.socket
+After=network-online.target podman.socket local-fs.target
 Wants=network-online.target
+Requires=podman.socket
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+Delegate=yes
 WorkingDirectory=/data/harbor
-Environment=PATH=/usr/local/bin:/usr/bin:/bin:/root/.local/bin
+Environment=HOME=/root
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/bin
 ExecStart=/usr/local/bin/podman-compose up -d
 ExecStop=/usr/local/bin/podman-compose down
 TimeoutStartSec=0
