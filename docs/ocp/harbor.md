@@ -64,7 +64,6 @@ ln -sf /run/podman/podman.sock /var/run/docker.sock
 mkdir -p /data
 
 HARBOR_TGZ=$(find /opt/harbor-bundle -iname "harbor-offline-installer-*.tgz" | head -1)
-echo "找到: $HARBOR_TGZ"
 
 tar xzf "$HARBOR_TGZ" -C /data/
 ```
