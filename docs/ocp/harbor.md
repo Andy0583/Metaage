@@ -111,7 +111,6 @@ sed -i \
         s|^\( *certificate: \).*|\1/data/harbor/certs/harbor.ocp.andy.com.crt|
         s|^\( *private_key: \).*|\1/data/harbor/certs/harbor.ocp.andy.com.key|
       }' \
-  -e 's|^harbor_admin_password:.*|harbor_admin_password: Ginnet$%123|' \
   -e '/^trivy:/,/^$/ s|^\( *offline_scan: \).*|\1true|' \
   harbor.yml
 ```
