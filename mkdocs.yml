@@ -48,7 +48,7 @@ nav:
     - MPS Deployment: graid/mps.md
     - GRAID Log收集: graid/collection.md
   - Container: 
-    - OCP SNO 離線安裝: ocp/snoinstall.md
-    - Harbor 離線安裝: ocp/harbor.md
+    - OCP SNO 離線安裝: container/snoinstall.md
+    - Harbor 離線安裝: container/harbor.md
   - Proxmox:
     - 初始安裝設定: pve/install.md
