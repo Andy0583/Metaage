@@ -1,3 +1,11 @@
+**關閉防火牆及安全性**
+```
+systemctl stop firewalld
+systemctl disable firewalld
+setenforce 0
+sed -i 's/enforcing/disabled/' /etc/selinux/config
+
+```
 **解壓縮離線檔案**
 ```
 mkdir -p /opt/harbor-bundle
@@ -158,7 +166,5 @@ podman-compose up -d
 
 **重開機自動啟動Harbor**
 ```
-cd /opt/harbor
-
 podman generate systemd --new --name harbor-core --files
 ```
