@@ -1,5 +1,6 @@
 site_name: Andy's Technical Notes
 use_directory_urls: false
+
 theme:
   name: material
   language: zh-TW
@@ -33,6 +34,8 @@ theme:
     - content.code.copy
 extra_css:
   - overrides/extra.css
+extra_javascript:
+  - javascripts/home-wide.js
 markdown_extensions:
   - md_in_html
   - admonition
