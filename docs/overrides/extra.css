@@ -172,8 +172,3 @@ article.md-content__inner > h1:first-child + * {
 .link-box p {
   margin: 4px 0 !important;
 }
-body.home-wide .md-main__inner,
-body.home-wide .md-content,
-body.home-wide .md-grid {
-  max-width: 1440px !important;
-}
