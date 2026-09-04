@@ -1,3 +1,4 @@
+```
 mkdir -p /opt/harbor-bundle
 tar xzf harbor-offline-bundle.tar.gz -C /opt/
 cd /opt/harbor-bundle
@@ -131,4 +132,4 @@ EOF
 grep -n "^\s*logging:" docker-compose.yml
 
 podman-compose up -d
-
+```
