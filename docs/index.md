@@ -41,7 +41,7 @@
 ---
 !!! info "聯絡資訊"
     <div style="font-size: 0.7rem;">
-    **<font color="#00008B">Andy Hsu</font>** &nbsp;&nbsp; **Email:** andy0583@gmail.com<br>
+    **站長工程師：<font color="#00008B">Andy Hsu</font>** &nbsp;&nbsp; **Email:** andy0583@gmail.com<br>
     **Certificate:** PMP、Dell、Netapp、VMware、RedHat、Veeam、Gemini、Claude code<br>
     如有任何技術問題或建議，歡迎隨時與我聯繫。<br>
     **<font color="red">請保持心中的光，因為你不知道，誰會藉著你的光走出黑暗。</font>**
