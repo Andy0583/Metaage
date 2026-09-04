@@ -362,3 +362,17 @@ done
 ```
 openshift-install --dir=/home/ocp-offline/sno-install agent create image --log-level=info
 ```
+
+### **<font color="red">建立OCP VM</font>**
+**設定OCP VM**
+- disk.EnableUUID = TRUE
+```
+nohup openshift-install --dir=/home/ocp-offline/sno-install agent wait-for bootstrap-complete --log-level=info > /home/ocp-offline/sno-bootstrap.log 2>&1 &
+
+tail -f /home/ocp-offline/sno-bootstrap.log
+
+# 於cluster bootstrap is complete之後執行
+nohup openshift-install --dir=/home/ocp-offline/sno-install agent wait-for install-complete --log-level=info > /home/ocp-offline/sno-install.log 2>&1 &
+
+tail -f /home/ocp-offline/sno-install.log
+```
