@@ -34,8 +34,6 @@ theme:
     - content.code.copy
 extra_css:
   - overrides/extra.css
-extra_javascript:
-  - javascripts/home-wide.js
 markdown_extensions:
   - md_in_html
   - admonition
