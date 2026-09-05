@@ -41,7 +41,7 @@
 ---
 !!! info "聯絡資訊"
     <div style="display: flex; align-items: center; gap: 16px;">
-      <img src="images/logo.jpeg" alt="Andy Hsu" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; flex-shrink: 0;"> 
+      <img src="images/logo.jpeg" alt="Andy Hsu" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; flex-shrink: 0; image-rendering: -webkit-optimize-contrast;">> 
       <div style="font-size: 0.7rem;">
       **站長工程師：<font color="#00008B">Andy Hsu</font>** &nbsp;&nbsp; **Email:** andy0583@gmail.com<br>
       **Certificate:** PMP、Dell、Netapp、VMware、RedHat、Veeam<br>
